@@ -1,150 +1,99 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="style.css">
-        <h1 class="site-title">Track Your Tour</h1>
-        <header class="header" data-header>
-            <div class="overlay" data-overlay></div>
-            <div class="header-top">
-              <div class="container">
-                <a href="tel:+01123456790" class="helpline-box">        
-                  <div class="icon-box">
-                  </div>
-                  <div class="wrapper">
-                    <p class="helpline-title">For Further Inquires :</p>
-                    <p class="helpline-number">+01 (123) 4567 90</p>
-                  </div>
-                </a>
-                
-                  <div class="input-wrapper">
-                      <label for="destination" class="input-label">search Destination*</label>
-                  </div>
-                <div class="header-btn-group">
-                  <button class="search-btn" aria-label="Search">
-                  </button>
-                  <button class="nav-open-btn" aria-label="Open Menu" data-nav-open-btn>
-                  </button>
-                </div>
-              </div>
-            </div>
-            <div class="header-bottom">
-              <div class="container">
-                <ul class="social-list">
-                  <li>
-                    <a href="#" class="social-link">
-                    </a>
-                </li>
-                  <li>
-                    <a href="#" class="social-link">
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#" class="social-link">
-                    </a>
-                  </li>
-          
-                </ul>
-          
-                <nav class="navbar" data-navbar>
-          
-                  <div class="navbar-top">
-          
-                    <a href="#" class="logo" title="Tourly"></a>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="style.css" />
+  <h1 class="site-title">Track Your Tour</h1>
+ 
+</head>
 
-          
-                    <button class="nav-close-btn" aria-label="Close Menu" data-nav-close-btn>
-          
-                    </button>
-          
-                  </div>
-          
-                  <ul class="navbar-list">
-          
-                    <li>
-                      <a href="#home" class="navbar-link" data-nav-link>home</a>
-                    </li>
-          
-                    <li>
-                      <a href="#" class="navbar-link" data-nav-link>about us</a>
-                    </li>
-          
-                    <li>
-                      <a href="#destination" class="navbar-link" data-nav-link>destination</a>
-                    </li>
-          
-                    <li>
-                      <a href="#package" class="navbar-link" data-nav-link>packages</a>
-                    </li>
-          
-                    <li>
-                      <a href="#transportation " class="navbar-link" data-nav-link>transportation</a>
-                    </li>
-          
-                    <li>
-                      <a href="#contact" class="navbar-link" data-nav-link>contact us</a>
-                    </li>
-          
-                  </ul>
-          
-                </nav>
-          
-                <button class="btn btn-primary">Book Now</button>
-          
-              </div>
-            </div>
-            <section id="package" class="package-section">
-              <div class="container package-container">
-                <div class="package-box">
-                  <h2 class="section-title">🌄 Shimla Getaway</h2>
-                  <p class="package-description">
-                    Discover the charm of Shimla with our all-inclusive travel package.
-                  </p>
-            
-                  <div class="package-content">
-                    <ul class="package-details">
-                      <li><strong>Duration:</strong> 5 Days / 4 Nights</li>
-                      <li><strong>Accommodation:</strong> 4-star Hotel Stay</li>
-                      <li><strong>Transportation:</strong> AC Volvo Bus / Private Cab</li>
-                      <li><strong>Meals:</strong> Daily Breakfast & Dinner</li>
-                      <li><strong>Activities:</strong> Guided city tour, Kufri trip, Mall Road shopping</li>
-                    </ul>
-            
-                    <div class="package-price">
-                      <p><strong>Starting from:</strong> ₹9,999 per person</p>
-                    </div>
-            
-                    <button class="btn btn-primary">Book Shimla Tour</button>
-                  </div>
-                </div>
-              </div>
-              <div class="container package-container">
-                <div class="package-box">
-                  <h2 class="section-title">🏰 Jaipur Royal Experience</h2>
-                  <p class="package-description">
-                    Dive into the royal heritage of Jaipur with our specially curated travel plan.
-                  </p>
-            
-                  <div class="package-content">
-                    <ul class="package-details">
-                      <li><strong>Duration:</strong> 4 Days / 3 Nights</li>
-                      <li><strong>Accommodation:</strong> Heritage Hotel / Haveli Stay</li>
-                      <li><strong>Transportation:</strong> AC Train / Private Cab</li>
-                      <li><strong>Meals:</strong> Breakfast Included</li>
-                      <li><strong>Activities:</strong> City Palace, Amber Fort, Hawa Mahal tour, Cultural show</li>
-                    </ul>
-            
-                    <div class="package-price">
-                      <p><strong>Starting from:</strong> ₹7,499 per person</p>
-                    </div>
-            
-                    <button class="btn btn-primary">Book Jaipur Tour</button>
-                  </div>
-                </div>
-              </div>
-            </section>            
-        </header>           
-    </head>
+<body>
+  <header class="header" data-header>
+    <div class="overlay" data-overlay></div>
 
+    <div class="header-top">
+      <div class="container">
+        <a href="tel:+01123456790" class="helpline-box">
+          <div class="icon-box"></div>
+          <div class="wrapper">
+            <p class="helpline-title">For Further Inquires :</p>
+            <p class="helpline-number">+01 (123) 4567 90</p>
+          </div>
+        </a>
+
+        <div class="input-wrapper">
+          <label for="destination" class="input-label">Search Destination*</label>
+          <input type="text" id="destination" name="destination" placeholder="Enter a destination...">
+        </div>
+
+        <div class="header-btn-group">
+          <button class="search-btn" aria-label="Search"></button>
+          <button class="nav-open-btn" aria-label="Open Menu" data-nav-open-btn></button>
+        </div>
+      </div>
+    </div>
+
+    
+
+        <nav class="navbar" data-navbar>
+          <div class="navbar-top">
+            <a href="#" class="logo" title="Tourly">Tourly</a>
+            <button class="nav-close-btn" aria-label="Close Menu" data-nav-close-btn></button>
+          </div>
+          <ul class="navbar-list">
+            <li><a href="#home" class="navbar-link" data-nav-link>Home</a></li>
+            <li><a href="#about" class="navbar-link" data-nav-link>About Us</a></li>
+            <li><a href="#destination" class="navbar-link" data-nav-link>Destination</a></li>
+            <li><a href="#package" class="navbar-link" data-nav-link>Packages</a></li>
+            <li><a href="#transportation" class="navbar-link" data-nav-link>Transportation</a></li>
+            <li><a href="#contact" class="navbar-link" data-nav-link>Contact Us</a></li>
+          </ul>
+
+        </nav>
+      </div>
+    </div>
+  </header>
+  <section id="package" class="package-section">
+    <div class="container package-grid">
+
+      <div class="package-box">
+        <h2 class="section-title">🌄 Shimla Getaway</h2>
+        <p class="package-description">
+          Discover the charm of Shimla with our all-inclusive travel package.
+        </p>
+        <ul class="package-details">
+          <li><strong>Duration:</strong> 5 Days / 4 Nights</li>
+          <li><strong>Accommodation:</strong> 4-star Hotel Stay</li>
+          <li><strong>Transportation:</strong> AC Volvo Bus / Private Cab</li>
+          <li><strong>Meals:</strong> Daily Breakfast & Dinner</li>
+          <li><strong>Activities:</strong> Guided city tour, Kufri trip, Mall Road shopping</li>
+        </ul>
+        <div class="package-price">
+          <p><strong>Starting from:</strong> ₹9,999 per person</p>
+        </div>
+        <button class="btn btn-primary">Book Shimla Tour</button>
+    </div>
+      <div class="package-box">
+        <h2 class="section-title">🏰 Jaipur Royal Experience</h2>
+        <p class="package-description">
+          Dive into the royal heritage of Jaipur with our specially curated travel plan.
+        </p>
+        <ul class="package-details">
+          <li><strong>Duration:</strong> 4 Days / 3 Nights</li>
+          <li><strong>Accommodation:</strong> Heritage Hotel / Haveli Stay</li>
+          <li><strong>Transportation:</strong> AC Train / Private Cab</li>
+          <li><strong>Meals:</strong> Breakfast Included</li>
+          <li><strong>Activities:</strong> City Palace, Amber Fort, Hawa Mahal tour, Cultural show</li>
+        </ul>
+        <div class="package-price">
+          <p><strong>Starting from:</strong> ₹7,499 per person</p>
+        </div>
+        <button class="btn btn-primary">Book Jaipur Tour</button>
+      </div>
+
+    </div>
+  </section>
+
+</body>
 </html>
-
