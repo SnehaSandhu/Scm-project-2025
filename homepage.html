@@ -1,465 +1,823 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Track & Travel - Tour Adventures</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        /* Base Styles */
-        :root {
-            --primary: #4CAF50;
-            --secondary: #2196F3;
-            --dark: #333;
-            --light: #f9f9f9;
-            --shadow: 0 4px 8px rgba(0,0,0,0.1);
-        }
-        
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-        
-        body {
-            background-color: var(--light);
-            color: var(--dark);
-            line-height: 1.6;
-        }
-        
-        /* Header */
-        header {
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            color: white;
-            padding: 1rem 0;
-            box-shadow: var(--shadow);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-        
-        .container {
-            width: 90%;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-        
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        
-        .logo {
-            font-size: 1.8rem;
-            font-weight: 700;
-            display: flex;
-            align-items: center;
-        }
-        
-        .logo i {
-            margin-right: 10px;
-        }
-        
-        .nav-links {
-            display: flex;
-            list-style: none;
-        }
-        
-        .nav-links li {
-            margin-left: 2rem;
-        }
-        
-        .nav-links a {
-            color: white;
-            text-decoration: none;
-            font-weight: 500;
-            transition: all 0.3s ease;
-        }
-        
-        .nav-links a:hover {
-            opacity: 0.8;
-        }
-        
-        .btn {
-            display: inline-block;
-            background: white;
-            color: var(--primary);
-            padding: 0.6rem 1.5rem;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s ease;
-        }
-        
-        .btn:hover {
-            transform: translateY(-3px);
-            box-shadow: var(--shadow);
-        }
-        
-        /* Hero Section */
-        .hero {
-            height: 80vh;
-            background: url('https://images.unsplash.com/photo-1464037866556-6812c9d1c72e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80') no-repeat center center/cover;
-            display: flex;
-            align-items: center;
-            position: relative;
-        }
-        
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.5);
-        }
-        
-        .hero-content {
-            position: relative;
-            z-index: 1;
-            color: white;
-            max-width: 600px;
-        }
-        
-        .hero h1 {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-        }
-        
-        .hero p {
-            font-size: 1.2rem;
-            margin-bottom: 2rem;
-        }
-        
-        /* Tours Section */
-        .section-title {
-            text-align: center;
-            margin: 3rem 0;
-            font-size: 2.5rem;
-            color: var(--dark);
-        }
-        
-        .tours {
-            padding: 2rem 0;
-        }
-        
-        .tour-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-        
-        .tour-card {
-            background: white;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: var(--shadow);
-            transition: all 0.3s ease;
-        }
-        
-        .tour-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
-        }
-        
-        .tour-img {
-            height: 200px;
-            overflow: hidden;
-        }
-        
-        .tour-img img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s ease;
-        }
-        
-        .tour-card:hover .tour-img img {
-            transform: scale(1.1);
-        }
-        
-        .tour-info {
-            padding: 1.5rem;
-        }
-        
-        .tour-info h3 {
-            margin-bottom: 0.5rem;
-            font-size: 1.5rem;
-        }
-        
-        .tour-meta {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 1rem;
-            color: #666;
-        }
-        
-        .tour-price {
-            font-weight: 700;
-            color: var(--primary);
-            font-size: 1.2rem;
-        }
-        
-        .tour-desc {
-            margin-bottom: 1.5rem;
-        }
-        
-        /* Features */
-        .features {
-            background: #f1f8ff;
-            padding: 4rem 0;
-        }
-        
-        .feature-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-        }
-        
-        .feature-card {
-            text-align: center;
-            padding: 2rem;
-            background: white;
-            border-radius: 10px;
-            box-shadow: var(--shadow);
-        }
-        
-        .feature-icon {
-            font-size: 3rem;
-            color: var(--secondary);
-            margin-bottom: 1rem;
-        }
-        
-        /* Footer */
-        footer {
-            background: var(--dark);
-            color: white;
-            padding: 3rem 0 1rem;
-        }
-        
-        .footer-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 2rem;
-            margin-bottom: 2rem;
-        }
-        
-        .footer-col h3 {
-            margin-bottom: 1.5rem;
-            font-size: 1.3rem;
-        }
-        
-        .footer-links {
-            list-style: none;
-        }
-        
-        .footer-links li {
-            margin-bottom: 0.8rem;
-        }
-        
-        .footer-links a {
-            color: #ddd;
-            text-decoration: none;
-            transition: all 0.3s ease;
-        }
-        
-        .footer-links a:hover {
-            color: white;
-            padding-left: 5px;
-        }
-        
-        .social-links {
-            display: flex;
-            gap: 1rem;
-        }
-        
-        .social-links a {
-            color: white;
-            font-size: 1.5rem;
-        }
-        
-        .copyright {
-            text-align: center;
-            padding-top: 2rem;
-            border-top: 1px solid #444;
-        }
-        
-        /* Responsive */
-        @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-            }
-            
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Track Your Tour | Discover Amazing Destinations</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --primary: #4a6fa5;
+      --secondary: #ff7e5f;
+      --dark: #333;
+      --light: #f8f9fa;
+      --accent: #6bd8db;
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    
+    body {
+      background-color: #f5f7fa;
+      color: var(--dark);
+      overflow-x: hidden;
+    }
+    
+    .container {
+      width: 90%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+    
+    /* Header & Navigation */
+    header {
+      background: linear-gradient(135deg, var(--primary), #3a5a80);
+      color: white;
+      padding: 20px 0;
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      transition: all 0.3s ease;
+    }
+    
+    header.scrolled {
+      padding: 10px 0;
+      background: rgba(74, 111, 165, 0.95);
+      backdrop-filter: blur(10px);
+    }
+    
+    .logo {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: white;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+    }
+    
+    .logo::before {
+      content: "✈️";
+      margin-right: 10px;
+      font-size: 1.5rem;
+    }
+    
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .nav-links {
+      display: flex;
+      list-style: none;
+      align-items: center;
+    }
+    
+    .nav-links li {
+      margin-left: 30px;
+      position: relative;
+    }
+    
+    .nav-links a {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      padding: 5px 0;
+    }
+    
+    .nav-links a:hover {
+      color: var(--secondary);
+    }
+    
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      background: var(--secondary);
+      bottom: 0;
+      left: 0;
+      transition: width 0.3s ease;
+    }
+    
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+    
+    .btn {
+      display: inline-block;
+      padding: 10px 25px;
+      background: var(--secondary);
+      color: white;
+      border: none;
+      border-radius: 50px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-decoration: none;
+      box-shadow: 0 4px 15px rgba(255, 126, 95, 0.3);
+    }
+    
+    .btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 20px rgba(255, 126, 95, 0.4);
+      background: #ff6b4f;
+    }
+    
+    .btn-primary {
+      background: var(--primary);
+      box-shadow: 0 4px 15px rgba(74, 111, 165, 0.3);
+    }
+    
+    .btn-primary:hover {
+      background: #3a5a80;
+      box-shadow: 0 6px 20px rgba(74, 111, 165, 0.4);
+    }
+    
+    /* Hero Section */
+    .hero {
+      height: 100vh;
+      background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1506929562872-bb421503ef21?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') no-repeat center center/cover;
+      color: white;
+      display: flex;
+      align-items: center;
+      text-align: center;
+      padding-top: 80px;
+    }
+    
+    .hero-content {
+      max-width: 800px;
+      margin: 0 auto;
+      animation: fadeInUp 1s ease;
+    }
+    
+    .hero h1 {
+      font-size: 3.5rem;
+      margin-bottom: 20px;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+    }
+    
+    .hero p {
+      font-size: 1.2rem;
+      margin-bottom: 30px;
+      line-height: 1.6;
+    }
+    
+    /* Package Section */
+    .package-section {
+      padding: 100px 0;
+      background-color: var(--light);
+    }
+    
+    .section-title {
+      text-align: center;
+      margin-bottom: 60px;
+      font-size: 2.5rem;
+      color: var(--primary);
+      position: relative;
+    }
+    
+    .section-title::after {
+      content: '';
+      position: absolute;
+      width: 80px;
+      height: 4px;
+      background: var(--secondary);
+      bottom: -15px;
+      left: 50%;
+      transform: translateX(-50%);
+      border-radius: 2px;
+    }
+    
+    .package-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+      gap: 30px;
+    }
+    
+    .package-box {
+      background: white;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+      transition: all 0.3s ease;
+      position: relative;
+    }
+    
+    .package-box:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+    }
+    
+    .package-img {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+    
+    .package-box:hover .package-img {
+      transform: scale(1.05);
+    }
+    
+    .package-content {
+      padding: 25px;
+    }
+    
+    .package-box h2 {
+      font-size: 1.5rem;
+      margin-bottom: 15px;
+      color: var(--primary);
+    }
+    
+    .package-description {
+      color: #666;
+      margin-bottom: 20px;
+      line-height: 1.6;
+    }
+    
+    .package-details {
+      list-style: none;
+      margin-bottom: 25px;
+    }
+    
+    .package-details li {
+      margin-bottom: 10px;
+      display: flex;
+      align-items: flex-start;
+    }
+    
+    .package-details li::before {
+      content: "✓";
+      color: var(--secondary);
+      margin-right: 10px;
+      font-weight: bold;
+    }
+    
+    .package-price {
+      background: rgba(74, 111, 165, 0.1);
+      padding: 15px;
+      border-radius: 10px;
+      margin-bottom: 20px;
+      text-align: center;
+      font-weight: 600;
+      color: var(--primary);
+    }
+    
+    .package-price strong {
+      color: var(--dark);
+    }
+    
+    .btn-group {
+      display: flex;
+      justify-content: center;
+    }
+    
+    /* Special Badge */
+    .special-badge {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background: var(--secondary);
+      color: white;
+      padding: 5px 15px;
+      border-radius: 50px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      z-index: 1;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+    
+    /* Animation */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    /* Responsive Design */
+    @media (max-width: 992px) {
+      .hero h1 {
+        font-size: 2.8rem;
+      }
+      
+      .package-grid {
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .hero h1 {
+        font-size: 2.2rem;
+      }
+      
+      .hero p {
+        font-size: 1rem;
+      }
+      
+      .nav-links {
+        display: none;
+      }
+      
+      .mobile-menu-btn {
+        display: block;
+      }
+    }
+    
+    /* Floating Elements */
+    .floating {
+      animation: floating 3s ease-in-out infinite;
+    }
+    
+    @keyframes floating {
+      0% { transform: translateY(0px); }
+      50% { transform: translateY(-15px); }
+      100% { transform: translateY(0px); }
+    }
+    
+    /* Testimonials Section - Added for creativity */
+    .testimonials {
+      padding: 80px 0;
+      background: linear-gradient(135deg, var(--primary), #3a5a80);
+      color: white;
+      text-align: center;
+    }
+    
+    .testimonial-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 30px;
+      margin-top: 50px;
+    }
+    
+    .testimonial-card {
+      background: rgba(255,255,255,0.1);
+      backdrop-filter: blur(10px);
+      padding: 30px;
+      border-radius: 15px;
+      transition: all 0.3s ease;
+    }
+    
+    .testimonial-card:hover {
+      transform: translateY(-10px);
+      background: rgba(255,255,255,0.2);
+    }
+    
+    .testimonial-text {
+      font-style: italic;
+      margin-bottom: 20px;
+      line-height: 1.6;
+    }
+    
+    .testimonial-author {
+      font-weight: 600;
+      color: var(--accent);
+    }
+    
+    /* Newsletter Section - Added for creativity */
+    .newsletter {
+      padding: 80px 0;
+      background-color: var(--light);
+      text-align: center;
+    }
+    
+    .newsletter-form {
+      max-width: 600px;
+      margin: 40px auto 0;
+      display: flex;
+      background: white;
+      border-radius: 50px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    }
+    
+    .newsletter-input {
+      flex: 1;
+      padding: 15px 25px;
+      border: none;
+      outline: none;
+      font-size: 1rem;
+    }
+    
+    .newsletter-btn {
+      padding: 15px 30px;
+      background: var(--secondary);
+      color: white;
+      border: none;
+      cursor: pointer;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+    
+    .newsletter-btn:hover {
+      background: #ff6b4f;
+    }
+    
+    /* Footer */
+    footer {
+      background: var(--dark);
+      color: white;
+      padding: 60px 0 20px;
+    }
+    
+    .footer-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 40px;
+      margin-bottom: 40px;
+    }
+    
+    .footer-col h3 {
+      font-size: 1.2rem;
+      margin-bottom: 20px;
+      color: var(--accent);
+    }
+    
+    .footer-links {
+      list-style: none;
+    }
+    
+    .footer-links li {
+      margin-bottom: 10px;
+    }
+    
+    .footer-links a {
+      color: #ccc;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+    
+    .footer-links a:hover {
+      color: var(--accent);
+      padding-left: 5px;
+    }
+    
+    .social-links {
+      display: flex;
+      gap: 15px;
+      margin-top: 20px;
+    }
+    
+    .social-links a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      background: rgba(255,255,255,0.1);
+      border-radius: 50%;
+      color: white;
+      transition: all 0.3s ease;
+    }
+    
+    .social-links a:hover {
+      background: var(--secondary);
+      transform: translateY(-3px);
+    }
+    
+    .copyright {
+      text-align: center;
+      padding-top: 20px;
+      border-top: 1px solid rgba(255,255,255,0.1);
+      color: #aaa;
+      font-size: 0.9rem;
+    }
+  </style>
 </head>
+
 <body>
-    <!-- Header -->
-    <header>
-        <div class="container">
-            <nav>
-                <div class="logo">
-                    <i class="fas fa-map-marked-alt"></i>
-                    <span>Track & Travel</span>
-                </div>
-                <ul class="nav-links">
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#">Tours</a></li>
-                    <li><a href="#">Destinations</a></li>
-                    <li><a href="#">About</a></li>
-                    <li><a href="#">Contact</a></li>
-                </ul>
-                <a href="#" class="btn">Sign In</a>
-            </nav>
-        </div>
-    </header>
+  <header id="header">
+    <div class="container">
+      <nav class="navbar">
+        <a href="#" class="logo">Track Your Tour</a>
+        <ul class="nav-links">
+          <li><a href="#home">Home</a></li>
+          <li><a href="#about">About Us</a></li>
+          <li><a href="#destination">Destinations</a></li>
+          <li><a href="#package">Packages</a></li>
+          <li><a href="#transportation">Transport</a></li>
+          <li><a href="#contact">Contact</a></li>
+          <a href="#" class="btn">Sign In</a>
+        </ul>
+        <button class="nav-open-btn" aria-label="Open Menu">
+          <i class="fas fa-bars"></i>
+        </button>
+      </nav>
+    </div>
+  </header>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="container">
-            <div class="hero-content">
-                <h1>Discover Amazing Tours Around The World</h1>
-                <p>Track your journey in real-time and explore breathtaking destinations with our guided tours.</p>
-                <a href="#" class="btn" style="background: var(--secondary); color: white;">Explore Tours</a>
+  <section class="hero" id="home">
+    <div class="container">
+      <div class="hero-content">
+        <h1>Discover Amazing Tours Around The World</h1>
+        <p>Track your journey in real-time and explore breathtaking destinations with our guided tours. Adventure awaits at every corner!</p>
+        <div style="display: flex; gap: 15px; justify-content: center;">
+          <a href="#package" class="btn" style="background: var(--secondary); color: white;">Explore Tours</a>
+          <a href="#" class="btn btn-primary"><i class="fas fa-play"></i> Watch Video</a>
+        </div>
+      </div>
+    </div>
+    <div class="floating" style="position: absolute; bottom: 50px; left: 50%; transform: translateX(-50%);">
+      <a href="#package" style="color: white; font-size: 2rem;"><i class="fas fa-chevron-down"></i></a>
+    </div>
+  </section>
+
+  <section id="package" class="package-section">
+    <div class="container">
+      <h2 class="section-title">Our Featured Packages</h2>
+      <div class="package-grid">
+        <div class="package-box">
+          <div class="special-badge">Popular</div>
+          <img src="https://www.honeymoonpackagesmanali.in/wp-content/uploads/2024/04/SUMMER-HILL.jpg" alt="Shimla Tour" class="package-img">
+          <div class="package-content">
+            <h2>🌄 Shimla Getaway</h2>
+            <p class="package-description">
+              Discover the charm of Shimla with our all-inclusive travel package through the majestic Himalayas.
+            </p>
+            <ul class="package-details">
+              <li><strong>Duration:</strong> 5 Days / 4 Nights</li>
+              <li><strong>Accommodation:</strong> 4-star Hotel Stay</li>
+              <li><strong>Transportation:</strong> AC Volvo Bus / Private Cab</li>
+              <li><strong>Meals:</strong> Daily Breakfast & Dinner</li>
+              <li><strong>Activities:</strong> Guided city tour, Kufri trip, Mall Road shopping</li>
+            </ul>
+            <div class="package-price">
+              <p><strong>Starting from:</strong> ₹9,999 per person</p>
             </div>
-        </div>
-    </section>
-
-    <!-- Tours Section -->
-    <section class="tours">
-        <div class="container">
-            <h2 class="section-title">Popular Tours</h2>
-            <div class="tour-grid">
-                <!-- Tour Card 1 -->
-                <div class="tour-card">
-                    <div class="tour-img">
-                        <img src="https://images.unsplash.com/photo-1506929562872-bb421503ef21?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1685&q=80" alt="Mountain Adventure">
-                    </div>
-                    <div class="tour-info">
-                        <h3>Mountain Adventure</h3>
-                        <div class="tour-meta">
-                            <span><i class="far fa-clock"></i> 7 Days</span>
-                            <span><i class="fas fa-map-marker-alt"></i> Switzerland</span>
-                        </div>
-                        <p class="tour-desc">Experience the breathtaking Swiss Alps with our expert guides.</p>
-                        <div class="tour-price">$1,299</div>
-                        <a href="#" class="btn">Track This Tour</a>
-                    </div>
-                </div>
-
-                <!-- Tour Card 2 -->
-                <div class="tour-card">
-                    <div class="tour-img">
-                        <img src="https://images.unsplash.com/photo-1530103862676-de8c9debad1d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80" alt="Safari Expedition">
-                    </div>
-                    <div class="tour-info">
-                        <h3>Safari Expedition</h3>
-                        <div class="tour-meta">
-                            <span><i class="far fa-clock"></i> 5 Days</span>
-                            <span><i class="fas fa-map-marker-alt"></i> Kenya</span>
-                        </div>
-                        <p class="tour-desc">Witness the majestic wildlife of Africa in their natural habitat.</p>
-                        <div class="tour-price">$899</div>
-                        <a href="#" class="btn">Track This Tour</a>
-                    </div>
-                </div>
-
-                <!-- Tour Card 3 -->
-                <div class="tour-card">
-                    <div class="tour-img">
-                        <img src="https://images.unsplash.com/photo-1503917988258-f87a78e3c995?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1887&q=80" alt="Cultural Journey">
-                    </div>
-                    <div class="tour-info">
-                        <h3>Cultural Journey</h3>
-                        <div class="tour-meta">
-                            <span><i class="far fa-clock"></i> 10 Days</span>
-                            <span><i class="fas fa-map-marker-alt"></i> Japan</span>
-                        </div>
-                        <p class="tour-desc">Immerse yourself in the rich traditions of Japanese culture.</p>
-                        <div class="tour-price">$1,599</div>
-                        <a href="#" class="btn">Track This Tour</a>
-                    </div>
-                </div>
+            <div class="btn-group">
+              <button class="btn btn-primary">Book Now</button>
             </div>
+          </div>
         </div>
-    </section>
 
-    <!-- Features Section -->
-    <section class="features">
-        <div class="container">
-            <h2 class="section-title">Why Choose Us</h2>
-            <div class="feature-grid">
-                <!-- Feature 1 -->
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-map-marked"></i>
-                    </div>
-                    <h3>Real-time Tracking</h3>
-                    <p>Follow your tour group in real-time with our GPS tracking system.</p>
-                </div>
-
-                <!-- Feature 2 -->
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-headset"></i>
-                    </div>
-                    <h3>24/7 Support</h3>
-                    <p>Our team is always available to assist you during your journey.</p>
-                </div>
-
-                <!-- Feature 3 -->
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-route"></i>
-                    </div>
-                    <h3>Curated Routes</h3>
-                    <p>Expertly designed itineraries to maximize your experience.</p>
-                </div>
-
-                <!-- Feature 4 -->
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-users"></i>
-                    </div>
-                    <h3>Group Community</h3>
-                    <p>Connect with fellow travelers through our platform.</p>
-                </div>
+        <div class="package-box">
+          <div class="special-badge">Best Seller</div>
+          <img src="https://www.backpackstays.com/wp-content/uploads/2023/01/Kashmir-Package-1.webp" alt="Kashmir Tour" class="package-img">
+          <div class="package-content">
+            <h2>🏔️ Kashmir Paradise</h2>
+            <p class="package-description">
+              Explore the "Heaven on Earth" with houseboat stays and breathtaking mountain views.
+            </p>
+            <ul class="package-details">
+              <li><strong>Duration:</strong> 6 Days / 5 Nights</li>
+              <li><strong>Accommodation:</strong> 4-star Hotels & Houseboat</li>
+              <li><strong>Transportation:</strong> Private AC Cab</li>
+              <li><strong>Meals:</strong> Breakfast & Dinner Included</li>
+              <li><strong>Activities:</strong> Shikara ride, Gulmarg gondola, Pahalgam valley</li>
+            </ul>
+            <div class="package-price">
+              <p><strong>Starting from:</strong> ₹14,999 per person</p>
             </div>
+            <div class="btn-group">
+              <button class="btn btn-primary">Book Now</button>
+            </div>
+          </div>
         </div>
-    </section>
 
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <div class="footer-grid">
-                <!-- Column 1 -->
-                <div class="footer-col">
-                    <h3>Track & Travel</h3>
-                    <p>Making tour tracking simple and enjoyable for travelers worldwide.</p>
-                    <div class="social-links">
-                        <a href="#"><i class="fab fa-facebook"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-youtube"></i></a>
-                    </div>
-                </div>
+        <div class="package-box">
+          <img src="https://www.bizarexpedition.com/images/2022/11/product/400/16685172807.jpg" alt="Uttarakhand Tour" class="package-img">
+          <div class="package-content">
+            <h2>⛰️ Uttarakhand Adventure</h2>
+            <p class="package-description">
+              Trek through stunning mountains and explore spiritual sites in this Himalayan wonderland.
+            </p>
+            <ul class="package-details">
+              <li><strong>Duration:</strong> 7 Days / 6 Nights</li>
+              <li><strong>Accommodation:</strong> 3-star Hotels & Camps</li>
+              <li><strong>Transportation:</strong> Private AC Cab</li>
+              <li><strong>Meals:</strong> Breakfast & Dinner Included</li>
+              <li><strong>Activities:</strong> Rishikesh rafting, Mussoorie hills, Nainital lake</li>
+            </ul>
+            <div class="package-price">
+              <p><strong>Starting from:</strong> ₹12,499 per person</p>
+            </div>
+            <div class="btn-group">
+              <button class="btn btn-primary">Book Now</button>
+            </div>
+          </div>
+        </div>
 
-                <!-- Column 2 -->
-                <div class="footer-col">
-                    <h3>Quick Links</h3>
-                    <ul class="footer-links">
-                        <li><a href="#">Home</a></li>
-                        <li><a href="#">Tours</a></li>
-                        <li><a href="#">Destinations</a></li>
-                        <li><a href="#">About Us</a></li>
-                        <li><a href="#">Contact</a></li>
-                    </ul>
-                </div>
+        <div class="package-box">
+          <div class="special-badge">Luxury</div>
+          <img src="https://www.rajasthanpersonaldriver.com/wp-content/uploads/2024/07/800450-PX-jaipur-collage.png" alt="Jaipur Tour" class="package-img">
+          <div class="package-content">
+            <h2>🏰 Royal Jaipur Experience</h2>
+            <p class="package-description">
+              Live like royalty with our luxury heritage tour through Rajasthan's Pink City.
+            </p>
+            <ul class="package-details">
+              <li><strong>Duration:</strong> 4 Days / 3 Nights</li>
+              <li><strong>Accommodation:</strong> Heritage Palace Hotel</li>
+              <li><strong>Transportation:</strong> Private Luxury Cab</li>
+              <li><strong>Meals:</strong> All Meals Included</li>
+              <li><strong>Activities:</strong> Elephant ride, Cultural show, Shopping tour</li>
+            </ul>
+            <div class="package-price">
+              <p><strong>Starting from:</strong> ₹18,999 per person</p>
+            </div>
+            <div class="btn-group">
+              <button class="btn btn-primary">Book Now</button>
+            </div>
+          </div>
+        </div>
 
-                <!--
+        <div class="package-box">
+          <img src="https://i.pinimg.com/736x/14/eb/fc/14ebfc7a8513757e9665a02b399baceb.jpg" alt="Kerala Tour" class="package-img">
+          <div class="package-content">
+            <h2>🌴 Kerala Backwaters</h2>
+            <p class="package-description">
+              Relax in nature's lap with houseboat cruises through palm-fringed canals and lagoons.
+            </p>
+            <ul class="package-details">
+              <li><strong>Duration:</strong> 5 Days / 4 Nights</li>
+              <li><strong>Accommodation:</strong> Backwater Resort & Houseboat</li>
+              <li><strong>Transportation:</strong> Private Cab & Houseboat</li>
+              <li><strong>Meals:</strong> Traditional Kerala Cuisine</li>
+              <li><strong>Activities:</strong> Ayurveda massage, Kathakali show, Tea plantation tour</li>
+            </ul>
+            <div class="package-price">
+              <p><strong>Starting from:</strong> ₹15,499 per person</p>
+            </div>
+            <div class="btn-group">
+              <button class="btn btn-primary">Book Now</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="package-box">
+          <div class="special-badge">New</div>
+          <img src="https://www.tourmyindia.com/blog//wp-content/uploads/2021/04/Best-Time-to-Visit-Andaman-Nicobar-Islands.jpg" alt="Andaman Tour" class="package-img">
+          <div class="package-content">
+            <h2>🏝️ Andaman Island Escape</h2>
+            <p class="package-description">
+              Pristine beaches, coral reefs, and water sports in India's tropical island paradise.
+            </p>
+            <ul class="package-details">
+              <li><strong>Duration:</strong> 6 Days / 5 Nights</li>
+              <li><strong>Accommodation:</strong> Beach Resort</li>
+              <li><strong>Transportation:</strong> Cab & Ferry</li>
+              <li><strong>Meals:</strong> Breakfast Included</li>
+              <li><strong>Activities:</strong> Scuba diving, Cellular Jail visit, Island hopping</li>
+            </ul>
+            <div class="package-price">
+              <p><strong>Starting from:</strong> ₹22,999 per person</p>
+            </div>
+            <div class="btn-group">
+              <button class="btn btn-primary">Book Now</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials Section -->
+  <section class="testimonials">
+    <div class="container">
+      <h2 class="section-title" style="color: white;">What Our Travelers Say</h2>
+      <div class="testimonial-grid">
+        <div class="testimonial-card">
+          <div class="testimonial-text">
+            "The Shimla tour was absolutely magical! Everything was perfectly organized, and our guide knew all the hidden gems. Can't wait to book my next adventure with Track Your Tour!"
+          </div>
+          <div class="testimonial-author">- Priya Sharma, Mumbai</div>
+          <div class="rating" style="color: var(--accent); margin-top: 10px;">
+            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+          </div>
+        </div>
+        
+        <div class="testimonial-card">
+          <div class="testimonial-text">
+            "As a solo female traveler, I felt completely safe and cared for during my Kerala trip. The houseboat experience was the highlight of my year! Highly recommend this company."
+          </div>
+          <div class="testimonial-author">- Ananya Patel, Delhi</div>
+          <div class="rating" style="color: var(--accent); margin-top: 10px;">
+            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+          </div>
+        </div>
+        
+        <div class="testimonial-card">
+          <div class="testimonial-text">
+            "Our family's Rajasthan tour was flawless. The kids loved the elephant ride, and we appreciated the attention to detail. Will definitely use Track Your Tour again!"
+          </div>
+          <div class="testimonial-author">- The Kapoor Family, Bangalore</div>
+          <div class="rating" style="color: var(--accent); margin-top: 10px;">
+            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Newsletter Section -->
+  <section class="newsletter">
+    <div class="container">
+      <h2 class="section-title">Get Travel Deals & Updates</h2>
+      <p>Subscribe to our newsletter and be the first to know about exclusive offers and new destinations!</p>
+      <form class="newsletter-form">
+        <input type="email" placeholder="Enter your email address" class="newsletter-input" required>
+        <button type="submit" class="newsletter-btn">Subscribe</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <h3>Track Your Tour</h3>
+          <p>Making travel dreams come true since 2010. We specialize in creating unforgettable experiences across India and beyond.</p>
+          <div class="social-links">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-youtube"></i></a>
+          </div>
+        </div>
+        
+        <div class="footer-col">
+          <h3>Quick Links</h3>
+          <ul class="footer-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About Us</a></li>
+            <li><a href="#package">Tour Packages</a></li>
+            <li><a href="#transportation">Transportation</a></li>
+            <li><a href="#contact">Contact Us</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-col">
+          <h3>Support</h3>
+          <ul class="footer-links">
+            <li><a href="#">FAQs</a></li>
+            <li><a href="#">Booking Policy</a></li>
+            <li><a href="#">Cancellation Policy</a></li>
+            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="#">Terms & Conditions</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-col">
+          <h3>Contact Info</h3>
+          <ul class="footer-links">
+            <li><i class="fas fa-map-marker-alt"></i> 123 Travel Street, Mumbai, India</li>
+            <li><i class="fas fa-phone"></i> +91 9876543210</li>
+            <li><i class="fas fa-envelope"></i> info@trackyourtour.com</li>
+            <li><i class="fas fa-clock"></i> Mon-Sat: 9AM - 7PM</li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="copyright">
+        <p>&copy; 2023 Track Your Tour. All Rights Reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Header scroll effect
+    window.addEventListener('scroll', function() {
+      const header = document.getElementById('header');
+      if (window.scrollY > 100) {
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
+      }
+    });
+    
+    // Smooth scrolling for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+          behavior: 'smooth'
+        });
+      });
+    });
+    
+    // Mobile menu toggle functionality would go here
+    // This is just a placeholder for the actual implementation
+    const mobileMenuBtn = document.querySelector('.nav-open-btn');
+    const navLinks = document.querySelector('.nav-links');
+    
+    mobileMenuBtn.addEventListener('click', function() {
+      navLinks.classList.toggle('active');
+    });
+  </script>
+</body>
+</html>
