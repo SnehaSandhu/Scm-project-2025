@@ -63,13 +63,11 @@
     justify-content: space-between;
     align-items: center;
   }
-  
   .nav-links {
     list-style: none;
     display: flex;
     gap: 2rem;
   }
-  
   .nav-links li a {
     color: white;
     text-decoration: none;
@@ -80,8 +78,6 @@
   .nav-links li a:hover {
     opacity: 0.8;
   }
-  
-  
   .btn {
     display: inline-block;
     background: white;
