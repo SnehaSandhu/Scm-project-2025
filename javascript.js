@@ -1,3 +1,17 @@
+// DOM Elements
+const navOpenBtn = document.querySelector("[data-nav-open-btn]");
+const navCloseBtn = document.querySelector("[data-nav-close-btn]");
+const navbar = document.querySelector("[data-navbar]");
+const overlay = document.querySelector("[data-overlay]");
+const navLinks = document.querySelectorAll("[data-nav-link]");
+const searchBtn = document.querySelector(".search-btn");
+const searchInput = document.getElementById("destination");
+const bookButtons = document.querySelectorAll(".btn-primary");
+const newsletterForm = document.querySelector(".newsletter-form");
+const newsletterInput = document.querySelector(".newsletter-input");
+const floatingArrow = document.querySelector(".floating");
+const packageBoxes = document.querySelectorAll(".package-box");
+
 // Toggle Navbar (Mobile Menu)
 const navOpenBtn = document.querySelector("[data-nav-open-btn]");
 const navCloseBtn = document.querySelector("[data-nav-close-btn]");
