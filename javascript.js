@@ -12,13 +12,6 @@ const newsletterInput = document.querySelector(".newsletter-input");
 const floatingArrow = document.querySelector(".floating");
 const packageBoxes = document.querySelectorAll(".package-box");
 
-// Toggle Navbar (Mobile Menu)
-const navOpenBtn = document.querySelector("[data-nav-open-btn]");
-const navCloseBtn = document.querySelector("[data-nav-close-btn]");
-const navbar = document.querySelector("[data-navbar]");
-const overlay = document.querySelector("[data-overlay]");
-const navLinks = document.querySelectorAll("[data-nav-link]");
-
 function openNavbar() {
   navbar.classList.add("active");
   overlay.style.display = "block";
