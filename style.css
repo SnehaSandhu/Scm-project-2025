@@ -233,7 +233,9 @@
   }
   
   .package-details li {
-    margin-bottom: 6px;
+    margin-bottom: 8px;
+    position: relative;
+    padding-left: 20px;
   }
   
   .package-price {
