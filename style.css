@@ -271,5 +271,11 @@
 
     .hero {
       height: 80vh;
+      min-height: 100vh;
+      padding: 5rem 0;
   }
+
+ .btn{
+     width: 100%;
+ }
   
