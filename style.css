@@ -254,8 +254,9 @@
   
   /* Responsive Design */
   @media screen and (max-width: 768px) {
-    .hero-content h1 {
-      font-size: 2rem;
+    .nav-links {
+      flex-direction: column; 
+      gap: 10px;
     }
   
     .hero-content p {
