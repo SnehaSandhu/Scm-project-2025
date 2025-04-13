@@ -237,7 +237,14 @@
     position: relative;
     padding-left: 20px;
   }
-  
+
+  .package-details li::before {
+  content: "•";
+  color: var(--secondary);
+  position: absolute;
+  left: 0;
+  }
+
   .package-price {
     font-size: 1.1rem;
     font-weight: bold;
