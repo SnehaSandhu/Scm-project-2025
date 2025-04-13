@@ -166,6 +166,7 @@
   
   .btn:hover {
     background-color: #1c7ed6;
+    transform: translateY(-2px);
   }
   
   .btn-primary {
@@ -173,7 +174,7 @@
   }
   
   .btn-primary:hover {
-    background-color:orange;
+    background-color:#e67e00;
   }
   
   
