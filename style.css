@@ -17,6 +17,7 @@
     background-color: var(--light);
     color: var(--dark);
     line-height: 1.6;
+    scroll-behaviour: smooth;
     margin: 0;
   }
   
