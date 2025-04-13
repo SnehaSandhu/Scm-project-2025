@@ -200,6 +200,10 @@
     justify-content: space-between;
     transition: transform var(--transition-time) ease;
   }
+
+  .package-box:hover {
+  transform: translateY(-5px);
+  }
   
   .package-img {
     width: 100%;
@@ -218,6 +222,7 @@
   .package-description {
     margin-bottom: 15px;
     color: var(--gray);
+    line-height: 1.5;
   }
   
   .package-details {
