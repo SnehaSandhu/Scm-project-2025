@@ -7,11 +7,8 @@ const navLinks = document.querySelectorAll("[data-nav-link]");
 const searchBtn = document.querySelector(".search-btn");
 const searchInput = document.getElementById("destination");
 const bookButtons = document.querySelectorAll(".btn-primary");
-const newsletterForm = document.querySelector(".newsletter-form");
-const newsletterInput = document.querySelector(".newsletter-input");
-const floatingArrow = document.querySelector(".floating");
-const packageBoxes = document.querySelectorAll(".package-box");
 
+// Navbar functions
 function openNavbar() {
   navbar.classList.add("active");
   overlay.style.display = "block";
@@ -26,15 +23,11 @@ navOpenBtn.addEventListener("click", openNavbar);
 navCloseBtn.addEventListener("click", closeNavbar);
 overlay.addEventListener("click", closeNavbar);
 
-// Close Navbar when a nav link is clicked
 navLinks.forEach(link => {
   link.addEventListener("click", closeNavbar);
 });
 
 // Search Destination Functionality
-const searchBtn = document.querySelector(".search-btn");
-const searchInput = document.getElementById("destination");
-
 searchBtn.addEventListener("click", () => {
   const destination = searchInput.value.trim();
   if (destination) {
@@ -45,8 +38,6 @@ searchBtn.addEventListener("click", () => {
 });
 
 // Book Button Functionality
-const bookButtons = document.querySelectorAll(".btn-primary");
-
 bookButtons.forEach(button => {
   button.addEventListener("click", () => {
     alert("Thank you for choosing us! Our agent will contact you shortly.");
