@@ -9,38 +9,71 @@ const searchInput = document.getElementById("destination");
 const bookButtons = document.querySelectorAll(".btn-primary");
 
 // Navbar functions
-function openNavbar() {
-  navbar.classList.add("active");
-  overlay.style.display = "block";
+function toggleNavbar(shouldOpen) {
+  navbar.classList.toggle(ACTIVE_CLASS , shouldOpen);
+  overlay.style.display = shouldOpen ? BLOCK_DISPLAY : NONE_DISPLAY;
 }
+function openNavbar(){
+  toggleNavbar(true);
+  document.body.style.overflow ="hidden";
+}
+
 
 function closeNavbar() {
-  navbar.classList.remove("active");
-  overlay.style.display = "none";
+  toggleNavbar(false);
+  document.body.style.overflow ="";
 }
-
+function setupEventListeners(){
 navOpenBtn.addEventListener("click", openNavbar);
 navCloseBtn.addEventListener("click", closeNavbar);
 overlay.addEventListener("click", closeNavbar);
 
-navLinks.forEach(link => {
-  link.addEventListener("click", closeNavbar);
-});
-
-// Search Destination Functionality
-searchBtn.addEventListener("click", () => {
-  const destination = searchInput.value.trim();
-  if (destination) {
-    alert(`Searching tours for: ${destination}`);
-  } else {
-    alert("Please enter a destination!");
-  }
-});
-
-// Book Button Functionality
-bookButtons.forEach(button => {
-  button.addEventListener("click", () => {
-    alert("Thank you for choosing us! Our agent will contact you shortly.");
+  navLinks.forEach(link => {
+    link.addEventListener("click", closeNavbar);
   });
-});
+
+  // Search functionality with input validation
+  searchButton.addEventListener("click", handleSearch);
+  searchInput.addEventListener("keypress", (e) => {
+    if (e.key === "Enter") handleSearch();
+  });
+
+  // Book buttons with event delegation potential
+  bookButtons.forEach(button => {
+    button.addEventListener("click", handleBooking);
+  });
+}
+// Separate handler functions for better organization
+function handleSearch() {
+  const destination = searchInput.value.trim();
+  
+  if (!destination) {
+    showAlert("Please enter a destination!");
+    searchInput.focus();
+    return;
+  }
+  
+  showAlert(`Searching tours for: ${destination}`);
+  
+}
+
+function handleBooking() {
+  showAlert("Thank you for choosing us! Our agent will contact you shortly.");
+  
+}
+
+
+function showAlert(message) {
+  
+  alert(message);
+}
+
+
+function init() {
+  setupEventListeners();
+}
+
+// Start the application
+init();
+
 
