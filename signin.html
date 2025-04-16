@@ -4,42 +4,47 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Sign In - Track Your Travel</title>
-  <link rel="stylesheet" href="style.css" />
-  <link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
-  />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
   <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1950&q=80') no-repeat center center fixed;
-      background-size: cover;
       height: 100vh;
+      overflow: hidden;
       display: flex;
       align-items: center;
       justify-content: center;
     }
 
+    #bg-video {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      object-fit: cover;
+      z-index: -1;
+    }
+
     .signin-container {
       background: rgba(255, 255, 255, 0.1);
       border-radius: 20px;
-      backdrop-filter:  white(15px);
+      backdrop-filter: blur(15px);
       padding: 40px;
       width: 90%;
       max-width: 400px;
       box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
     }
 
-    
-    .signin-container h2 {
+    .signin-box h2 {
       text-align: center;
       color: #fff;
       margin-bottom: 30px;
-    }
-
-    .signin-box h2 {
-      margin-bottom: 1rem;
-      color: #333;
     }
 
     .signin-box input {
@@ -66,18 +71,22 @@
       background-color: #5e5a5a;
     }
 
-    .signin-box .social-login {
+    .social-login {
       margin: 1.5rem 0;
+      text-align: center;
     }
 
-    .signin-box .social-login i {
+    .social-login i {
       margin: 0 10px;
       font-size: 1.5rem;
+      color: #fff;
       cursor: pointer;
     }
 
     .signin-box p {
       margin-top: 1rem;
+      text-align: center;
+      color: #fff;
     }
 
     .signin-box a {
@@ -88,23 +97,26 @@
     .signin-box a:hover {
       text-decoration: underline;
     }
+
     .back-home-btn {
-  display: inline-block;
-  margin-top: 1rem;
-  color: #007bff;
-  text-decoration: none;
-  font-size: 0.95rem;
-  transition: color 0.2s ease;
-}
-
-.back-home-btn:hover {
-  color: #0056b3;
-  text-decoration: underline;
-}
-
+      display: inline-block;
+      margin-top: 1rem;
+      color: #007bff;
+      text-decoration: none;
+      font-size: 0.95rem;
+      transition: color 0.2s ease;
+    }
+    .back-home-btn:hover {
+      color: #0056b3;
+      text-decoration: underline;
+    }
   </style>
 </head>
 <body>
+  <video autoplay muted loop id="bg-video">
+    <source src="https://videos.pexels.com/video-files/2169879/2169879-uhd_2560_1440_30fps.mp4" />
+    Your browser does not support the video tag.
+  </video>
   <div class="signin-container">
     <div class="signin-box">
       <h2>Sign In</h2>
@@ -116,32 +128,26 @@
 
       <div class="social-login">
         <p>Or sign in with</p>
-        <i class="fab fa-google"></i>
-        <i class="fab fa-facebook"></i>
-        <i class="fab fa-twitter"></i>
+        <i class="fab fa-google" title="Google"></i>
+        <i class="fab fa-facebook" title="Facebook"></i>
+        <i class="fab fa-twitter" title="Twitter"></i>
       </div>
-      <a href="index.html" class="back-home-btn">← Back to Home</a>
-      
 
+      <a href="index.html" class="back-home-btn">← Back to Home</a>
       <p>Don't have an account? <a href="#">Register</a></p>
     </div>
   </div>
-</body>
-<script>
+  <script>
     document.getElementById("signin-form").addEventListener("submit", function (e) {
-      e.preventDefault(); // Prevents form from submitting normally
-  
+      e.preventDefault();
       const email = e.target.email.value;
       const password = e.target.password.value;
-  
-      // Simple check to see if both fields are filled (you can add more logic later)
       if (email && password) {
-        // Redirect to homepage
         window.location.href = "index.html";
       } else {
         alert("Please enter both email and password.");
       }
     });
   </script>
-  
+</body>
 </html>
