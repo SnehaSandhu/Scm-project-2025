@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sign In - Track Your Travel</title>
+  <link rel="stylesheet" href="style.css" />
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+  />
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(black, rgb(54, 53, 53), grey, rgb(118, 107, 107)) ;
+      margin: 0;
+      padding: 0;
+    }
+
+    .signin-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .signin-box {
+      background-color: #fff;
+      padding: 2.5rem;
+      border-radius: 1rem;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+      width: 100%;
+      max-width: 400px;
+      text-align: center;
+    }
+
+    .signin-box h2 {
+      margin-bottom: 1rem;
+      color: #333;
+    }
+
+    .signin-box input {
+      width: 100%;
+      padding: 0.75rem;
+      margin: 0.5rem 0;
+      border: 1px solid #ccc;
+      border-radius: 0.5rem;
+    }
+
+    .signin-box button {
+      width: 100%;
+      padding: 0.75rem;
+      margin-top: 1rem;
+      border: none;
+      border-radius: 0.5rem;
+      background-color: #111111;
+      color: white;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+
+    .signin-box button:hover {
+      background-color: #5e5a5a;
+    }
+
+    .signin-box .social-login {
+      margin: 1.5rem 0;
+    }
+
+    .signin-box .social-login i {
+      margin: 0 10px;
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+
+    .signin-box p {
+      margin-top: 1rem;
+    }
+
+    .signin-box a {
+      color: #007bff;
+      text-decoration: none;
+    }
+
+    .signin-box a:hover {
+      text-decoration: underline;
+    }
+    .back-home-btn {
+  display: inline-block;
+  margin-top: 1rem;
+  color: #007bff;
+  text-decoration: none;
+  font-size: 0.95rem;
+  transition: color 0.2s ease;
+}
+
+.back-home-btn:hover {
+  color: #0056b3;
+  text-decoration: underline;
+}
+
+  </style>
+</head>
+<body>
+  <div class="signin-container">
+    <div class="signin-box">
+      <h2>Sign In</h2>
+      <form id="signin-form">
+        <input type="email" name="email" placeholder="Email Address" required />
+        <input type="password" name="password" placeholder="Password" required />
+        <button type="submit">Sign In</button>
+      </form>
+
+      <div class="social-login">
+        <p>Or sign in with</p>
+        <i class="fab fa-google"></i>
+        <i class="fab fa-facebook"></i>
+        <i class="fab fa-twitter"></i>
+      </div>
+      <a href="index.html" class="back-home-btn">← Back to Home</a>
+      
+
+      <p>Don't have an account? <a href="#">Register</a></p>
+    </div>
+  </div>
+</body>
+<script>
+    document.getElementById("signin-form").addEventListener("submit", function (e) {
+      e.preventDefault(); // Prevents form from submitting normally
+  
+      const email = e.target.email.value;
+      const password = e.target.password.value;
+  
+      // Simple check to see if both fields are filled (you can add more logic later)
+      if (email && password) {
+        // Redirect to homepage
+        window.location.href = "index.html";
+      } else {
+        alert("Please enter both email and password.");
+      }
+    });
+  </script>
+  
+</html>
