@@ -1,92 +1,222 @@
-</div>
 
-<ul class="navbar-list">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="style.css" />
+  <title>Track Your Tour</title>
+</head>
+<body>
 
-  <li>
-    <a href="#home" class="navbar-link" data-nav-link>Home</a>
-  </li>
-
-  <li>
-    <a href="#about" class="navbar-link" data-nav-link>About Us</a>
-  </li>
-
-  <li>
-    <a href="#destination" class="navbar-link" data-nav-link>Destination</a>
-  </li>
-
-  <li>
-    <a href="#package" class="navbar-link" data-nav-link>Packages</a>
-  </li>
-
-  <li>
-    <a href="#gallery" class="navbar-link" data-nav-link>Gallery</a>
-  </li>
-
-  <li>
-    <a href="#contact" class="navbar-link" data-nav-link>Contact Us</a>
-  </li>
-
-</ul>
-
-</nav>
-
-<button class="btn btn-primary">Book Now</button>
-
-</div>
-</div>
-</header>
-<main>
-<article>
-<section class="hero" id="home">
-  <div class="container">
-
-    <h2 class="h1 hero-title">Journey to Explore the World</h2>
-
-    <p class="hero-text">
-      Join us for an unforgettable adventure that takes you to the most beautiful places around the globe. Explore new cultures, indulge in local cuisines, and create memories that last a lifetime!
-    </p>
-
-    <div class="btn-group">
-      <button class="btn btn-primary">Learn More</button>
-      <button class="btn btn-secondary">Book Now</button>
+  <header>
+    <div class="container">
+      <div class="header-btn-group">
+        <button class="search-btn" aria-label="Search"></button>
+        <button class="nav-open-btn" aria-label="Open Menu" data-nav-open-btn></button>
+      </div>
     </div>
 
-  </div>
+    <nav class="navbar">
+      <div class="container nav-container">
+        <a href="#" class="logo">🌍Track Your Travel </a>
+        <ul class="nav-links">
+          <li><a href="#home">Home</a></li>
+          <li><a href="#about">About Us</a></li>
+          <li><a href="#destination">Destination</a></li>
+          <li><a href="#package">Packages</a></li>
+          <li><a href="#transportation">Transportation</a></li>
+          <li><a href="contact.html">Contact Us</a></li>
+          <a href="#" class="btn">Sign In</a>
+        </ul>
+      </div>
+    </nav>
+  </header>
+  <section class="hero" id="home">
+    <div class="video-background">
+      <video autoplay muted loop playsinline>
+        <source src="https://videos.pexels.com/video-files/3572188/3572188-hd_1920_1080_30fps.mp4" type="video/mp4" />
+      </video>
+      <div class="overlay"></div>
+    </div>
+    <div class="container">
+      <div class="hero-content">
+        <h1>Love is in the air ,and so are we... flying to our next adventure!!</h1>
+        <p>Track your journey in real-time and explore breathtaking destinations with our guided tours.</p>
+        <a href="#" class="btn" style="background: var(--secondary); color: white;">Explore Tours</a>
+         </div>
+    </div>
+  </section>
+  <section id="package" class="package-section">
+    <div class="container package-grid">
+      <div class="package-box">
+        <img src="https://www.honeymoonpackagesmanali.in/wp-content/uploads/2024/04/SUMMER-HILL.jpg" alt="Shimla Tour" class="package-img">
+        <h2 class="section-title">🌄 Shimla Getaway</h2>
+        <p class="package-description">Discover the charm of Shimla with our all-inclusive travel package.</p>
+        <ul class="package-details">
+          <li><strong>Duration:</strong> 5 Days / 4 Nights</li>
+          <li><strong>Accommodation:</strong> 4-star Hotel Stay</li>
+          <li><strong>Transportation:</strong> AC Volvo Bus / Private Cab</li>
+          <li><strong>Meals:</strong> Daily Breakfast & Dinner</li>
+          <li><strong>Activities:</strong> Guided city tour, Kufri trip, Mall Road shopping</li>
+        </ul>
+        <div class="package-price">
+          <p><strong>Starting from:</strong> ₹9,999 per person</p>
+        </div>
+        <button class="btn btn-primary">Book Shimla Tour</button>
+      </div>
+      <div class="package-box">
+        <img src="https://www.backpackstays.com/wp-content/uploads/2023/01/Kashmir-Package-1.webp" alt="Kashmir Tour" class="package-img">
+        <h2 class="section-title">🏔️ Kashmir</h2>
+        <p class="package-description">Explore the spiritual and scenic beauty of Kashmir with our special travel package.</p>
+        <ul class="package-details">
+          <li><strong>Duration:</strong> 4 Days / 3 Nights</li>
+          <li><strong>Accommodation:</strong> 3-star Hotel Stay</li>
+          <li><strong>Transportation:</strong> AC Sleeper Coach / Private Cab</li>
+          <li><strong>Meals:</strong> Breakfast & Dinner Included</li>
+          <li><strong>Places To Explore:</strong> Srinagar, Gulmarg, Pahalgam, Sonmarg</li>
+        </ul>
+        <div class="package-price">
+          <p><strong>Starting from:</strong> ₹8,499 per person</p>
+        </div>
+        <button class="btn btn-primary">Book Kashmir Tour</button>
+      </div>
+      <div class="package-box">
+        <img src="https://www.bizarexpedition.com/images/2022/11/product/400/16685172807.jpg" alt="Uttarakhand Tour" class="package-img">
+        <h2 class="section-title">🏔️ Uttarakhand</h2>
+        <p class="package-description">Explore the beautiful state in northern India, known for its stunning mountains.</p>
+        <ul class="package-details">
+          <li><strong>Duration:</strong> 2 Days / 3 Nights</li>
+          <li><strong>Accommodation:</strong> 3-star Hotel Stay</li>
+          <li><strong>Transportation:</strong> AC Sleeper Coach / Private Cab</li>
+          <li><strong>Meals:</strong> Breakfast & Dinner Included</li>
+          <li><strong>Places To Explore:</strong> Harshil valley, Nainital, Mussoorie, Haridwar</li>
+        </ul>
+        <div class="package-price">
+          <p><strong>Starting from:</strong> ₹86,499 per person</p>
+        </div>
+        <button class="btn btn-primary">Book Uttarakhand Tour</button>
+      </div>
+      <div class="package-box">
+        <img src="https://www.rajasthanpersonaldriver.com/wp-content/uploads/2024/07/800450-PX-jaipur-collage.png" alt="Jaipur Tour" class="package-img">
+        <h2 class="section-title">🏰 Jaipur</h2>
+        <ul class="package-details">
+          <li><strong>Duration:</strong> 4 Days / 3 Nights</li>
+          <li><strong>Accommodation:</strong> Heritage Hotel / Haveli Stay</li>
+          <li><strong>Transportation:</strong> AC Train / Private Cab</li>
+          <li><strong>Meals:</strong> Breakfast Included</li>
+          <li><strong>Places To Explore:</strong> City Palace, Amber Fort, Hawa Mahal tour, Cultural show</li>
+        </ul>
+        <div class="package-price">
+          <p><strong>Starting from:</strong> ₹7,499 per person</p>
+        </div>
+        <button class="btn btn-primary">Book Jaipur Tour</button>
+      </div>
+      <div class="package-box">
+        <img src="https://i.pinimg.com/736x/14/eb/fc/14ebfc7a8513757e9665a02b399baceb.jpg" alt="Kerala Tour" class="package-img">
+        <h2 class="section-title">🌴 Kerala</h2>
+        <ul class="package-details">
+          <li><strong>Duration:</strong> 5 Days / 4 Nights</li>
+          <li><strong>Accommodation:</strong> Backwater Resort / Treehouse Stay</li>
+          <li><strong>Transportation:</strong> AC Cab / Houseboat</li>
+          <li><strong>Meals:</strong> Breakfast & Traditional Kerala Lunch</li>
+          <li><strong>Places To Explore:</strong> Alleppey Houseboat Cruise, Munnar Tea Gardens, Kathakali Show, Beach Visit</li>
+        </ul>
+        <div class="package-price">
+          <p><strong>Starting from:</strong> ₹8,999 per person</p>
+        </div>
+        <button class="btn btn-primary">Book Kerala Tour</button>
+      </div>
+      <div class="package-box">
+        <img src="https://travelsetu.com/apps/uploads/new_destinations_photos/destination/2024/01/08/be3939ffdc48daac9f050cbbac3830df_400x400.jpg" alt="Mizoram Tour" class="package-img">
+        <h2 class="section-title">🏔️ Mizoram Tour</h2>
+        <p class="package-description">Discover the hidden gems of Northeast India with our Mizoram tour package.</p>
+        <ul class="package-details">
+          <li><strong>Duration:</strong> 3 Days / 4 Nights</li>
+          <li><strong>Accommodation:</strong> 4-star Hotel Stay</li>
+          <li><strong>Transportation:</strong> Bikes, AC cab</li>
+          <li><strong>Meals:</strong> Daily Breakfast & Dinner</li>
+          <li><strong>Places To Explore:</strong> Aizawl, Lunglei, Murlen National Park</li>
+        </ul>
+        <div class="package-price">
+          <p><strong>Starting from:</strong> ₹10,999 per person</p>
+        </div>
+        <button class="btn btn-primary">Book Mizoram Tour</button>
+      </div>
+
+    </div>
+  </section>
+
+
+  <section class="features-card-section">
+    <div class="features-card">
+        <h2 class="section-title">Why Choose Us</h2>
+        <div class="feature-grid">
+            
+            <div class="highlight-box">
+              <div class="feature-icon">
+                  <i class="fas fa-map-marked"></i>
+              </div>
+              <h3>Real-time Tracking</h3>
+              <p>Follow your tour group in real-time with our GPS tracking system.</p>
+          </div>
+          
+
+            
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-headset"></i>
+                </div>
+                <h3>24/7 Support</h3>
+                <p>Our team is always available to assist you during your journey.</p>
+            </div>
+
+            
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-route"></i>
+                </div>
+                <h3>Curated Routes</h3>
+                <p>Expertly designed itineraries to maximize your experience.</p>
+            </div>
+
+           
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-users"></i>
+                </div>
+                <h3>Group Community</h3>
+                <p>Connect with fellow travelers through our platform.</p>
+            </div>
+        </div>
+    </div>
 </section>
-
-<section class="tour-search">
-  <div class="container">
-
-    <div class="input-wrapper">
-      <label for="destination" class="input-label">Search Destination*</label>
-      <input type="text" id="destination" class="input-field" placeholder="Enter destination...">
+<footer id="contact">
+  <div class="footer-container">
+    <div class="footer-contact">
+      <h1>Contact Us</h1>
+      <form action="#" method="POST">
+        <input type="text" name="name" placeholder="Your Name" required />
+        <input type="email" name="email" placeholder="Your Email" required />
+        <textarea name="message" rows="4" placeholder="Your Message" required></textarea>
+        <button type="submit">Send Message</button>
+      </form>
     </div>
-
-    <div class="input-wrapper">
-      <label for="people" class="input-label">Pax Number*</label>
-      <input type="number" id="people" class="input-field" placeholder="Number of people">
+    <div class="footer-info">
+      <h3>Travel Your Travel With Us</h3>
+      <p>123 Wanderlust Ave<br/>Explore City, World 45678</p>
+      <p>Email: contact@trackyourtravelwithus.com<br/>Phone: +1 234 567 8901</p>
     </div>
-
-    <div class="input-wrapper">
-      <label for="checkin" class="input-label">Checkin Date**</label>
-      <input type="date" id="checkin" class="input-field">
-    </div>
-
-    <div class="input-wrapper">
-      <label for="checkout" class="input-label">Checkout Date*</label>
-      <input type="date" id="checkout" class="input-field"
-                min="" required aria-required="true">
-                  <svg class="input-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
-                    <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z"/>
-                  </svg>
-    </div>
-
-    <button type="submit" class="btn btn-secondary">Inquire Now</button>
-    <span class="btn-icon">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
-                    <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
-                  </svg>
-                </span>
-
   </div>
-</section>
+  <div class="footer-bottom">
+    &copy; 2025 Travel With Us. All rights reserved.
+  </div>
+</footer>
+
+
+
+<link rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+/>
+</body>
+</html>
