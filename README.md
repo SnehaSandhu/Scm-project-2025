@@ -1,4 +1,4 @@
-                                                                               #Track Your Travel
+                                                                   #Track Your Travel
 
 **Track Your Travel** is a travel logging application that allows users to record, manage, and view their travel history. Users can add destinations, save notes, and view trips on this site 
 
