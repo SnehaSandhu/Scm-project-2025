@@ -406,3 +406,7 @@ color: var(--secondary);
 .btn:hover {
   background-color: #0056b3;
 }
+
+html {
+  scroll-behavior: smooth;
+}
