@@ -2,71 +2,582 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Transportation - Track Your Tour</title>
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <style>
+    :root {
+      --primary-color: #007BFF;
+      --secondary-color: #0056b3;
+      --accent-color: #FF5722;
+      --light-gray: #f8f9fa;
+      --dark-gray: #343a40;
+    }
+    
     body {
       margin: 0;
-      font-family: Arial, sans-serif;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       background: #f4f4f4;
       color: #333;
+      line-height: 1.6;
     }
 
     header {
-      background: #007BFF;
+      background: var(--primary-color);
       padding: 15px 20px;
       color: #fff;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     }
 
     .logo {
       text-decoration: none;
       font-size: 24px;
+      font-weight: bold;
       color: #fff;
+      display: flex;
+      align-items: center;
+    }
+
+    .logo i {
+      margin-right: 10px;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 10px 20px;
+      border-radius: 5px;
+      text-decoration: none;
+      font-weight: 500;
+      transition: all 0.3s ease;
+    }
+
+    .btn-primary {
+      background: #fff;
+      color: var(--primary-color);
+    }
+
+    .btn-primary:hover {
+      background: var(--light-gray);
+    }
+
+    .btn-secondary {
+      background: var(--accent-color);
+      color: white;
+    }
+
+    .btn-secondary:hover {
+      background: #e04a1d;
     }
 
     .transportation-section {
       padding: 40px 20px;
-      max-width: 1000px;
+      max-width: 1200px;
       margin: auto;
     }
 
     .transportation-section h1 {
       text-align: center;
       margin-bottom: 30px;
+      color: var(--dark-gray);
+      position: relative;
+      padding-bottom: 15px;
+    }
+
+    .transportation-section h1:after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100px;
+      height: 3px;
+      background: var(--primary-color);
+    }
+
+    .search-filter {
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      margin-bottom: 30px;
+    }
+
+    .search-filter h2 {
+      margin-top: 0;
+      font-size: 1.2rem;
+      color: var(--dark-gray);
+    }
+
+    .filter-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+      margin-bottom: 15px;
+    }
+
+    .filter-option {
+      padding: 8px 15px;
+      background: var(--light-gray);
+      border-radius: 20px;
+      cursor: pointer;
+      transition: all 0.3s;
+      font-size: 0.9rem;
+    }
+
+    .filter-option:hover, .filter-option.active {
+      background: var(--primary-color);
+      color: white;
+    }
+
+    .search-bar {
+      display: flex;
+      margin-top: 15px;
+    }
+
+    .search-bar input {
+      flex: 1;
+      padding: 10px 15px;
+      border: 1px solid #ddd;
+      border-radius: 5px 0 0 5px;
+      font-size: 1rem;
+    }
+
+    .search-bar button {
+      padding: 10px 20px;
+      background: var(--primary-color);
+      color: white;
+      border: none;
+      border-radius: 0 5px 5px 0;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .search-bar button:hover {
+      background: var(--secondary-color);
+    }
+
+    .transportation-options {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 25px;
     }
 
     .transportation-option {
       background: #fff;
-      padding: 20px;
-      margin: 20px 0;
       border-radius: 10px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      overflow: hidden;
+      transition: transform 0.3s, box-shadow 0.3s;
     }
 
-    .transportation-option h2 {
-      margin-top: 0;
-      color: #007BFF;
+    .transportation-option:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+    }
+
+    .option-header {
+      padding: 20px;
+      border-bottom: 1px solid #eee;
+      display: flex;
+      align-items: center;
+    }
+
+    .option-icon {
+      font-size: 2rem;
+      margin-right: 15px;
+      color: var(--primary-color);
+    }
+
+    .option-title {
+      flex: 1;
+    }
+
+    .option-title h2 {
+      margin: 0;
+      color: var(--dark-gray);
+      font-size: 1.3rem;
+    }
+
+    .option-title p {
+      margin: 5px 0 0;
+      color: #666;
+      font-size: 0.9rem;
+    }
+
+    .option-details {
+      padding: 20px;
+    }
+
+    .option-details p {
+      margin: 0 0 15px;
+    }
+
+    .price {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: var(--primary-color);
+      margin-bottom: 15px;
+    }
+
+    .price span {
+      font-size: 0.9rem;
+      font-weight: normal;
+      color: #666;
+    }
+
+    .rating {
+      display: flex;
+      align-items: center;
+      margin-bottom: 15px;
+    }
+
+    .stars {
+      color: #FFC107;
+      margin-right: 10px;
+    }
+
+    .reviews {
+      color: #666;
+      font-size: 0.9rem;
+    }
+
+    .features {
+      margin: 15px 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .features li {
+      padding: 5px 0;
+      display: flex;
+      align-items: center;
+    }
+
+    .features i {
+      margin-right: 8px;
+      color: var(--primary-color);
+      font-size: 0.9rem;
+    }
+
+    .option-footer {
+      padding: 15px 20px;
+      background: var(--light-gray);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .view-details {
+      color: var(--primary-color);
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 0.9rem;
+      transition: color 0.3s;
+    }
+
+    .view-details:hover {
+      color: var(--secondary-color);
+      text-decoration: underline;
     }
 
     footer.footer-bottom {
       text-align: center;
-      padding: 20px;
-      background: #222;
+      padding: 30px 20px;
+      background: var(--dark-gray);
       color: #fff;
+      margin-top: 50px;
+    }
+
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin-bottom: 15px;
+    }
+
+    .footer-links a {
+      color: #fff;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    .footer-links a:hover {
+      color: var(--primary-color);
+    }
+
+    .social-icons {
+      margin-top: 15px;
+    }
+
+    .social-icons a {
+      color: white;
+      margin: 0 10px;
+      font-size: 1.2rem;
+      transition: color 0.3s;
+    }
+
+    .social-icons a:hover {
+      color: var(--primary-color);
+    }
+
+    @media (max-width: 768px) {
+      .transportation-options {
+        grid-template-columns: 1fr;
+      }
+      
+      .filter-group {
+        flex-direction: column;
+      }
+      
+      .search-bar {
+        flex-direction: column;
+      }
+      
+      .search-bar input {
+        border-radius: 5px;
+        margin-bottom: 10px;
+      }
+      
+      .search-bar button {
+        border-radius: 5px;
+      }
     }
   </style>
 </head>
 <body>
 
   <header>
-    
-    <a href="index.html" class="btn-primary">Back to Home</a>
-
+    <a href="index.html" class="logo">
+      <i class="fas fa-route"></i> Track Your Tour
+    </a>
+    <a href="index.html" class="btn btn-primary">
+      <i class="fas fa-arrow-left"></i> Back to Home
+    </a>
   </header>
 
   <main>
     <section class="transportation-section">
       <h1>Transportation Options</h1>
+
+      
+      <div class="search-filter">
+        <h2>Find your perfect travel option</h2>
+        <div class="filter-group">
+          <div class="filter-option active">All</div>
+          <div class="filter-option">Trains</div>
+          <div class="filter-option">Buses</div>
+          <div class="filter-option">Rental Cars</div>
+          <div class="filter-option">Flights</div>
+          <div class="filter-option">Cruises</div>
+        </div>
+        <div class="search-bar">
+          <input type="text" placeholder="Search by destination, provider, or type...">
+          <button type="submit"><i class="fas fa-search"></i> Search</button>
+        </div>
+      </div>
+
+      <div class="transportation-options">
+        <div class="transportation-option">
+          <div class="option-header">
+            <div class="option-icon">🚆</div>
+            <div class="option-title">
+              <h2>Premium Trains</h2>
+              <p>Comfortable rail journeys</p>
+            </div>
+          </div>
+          <div class="option-details">
+            <div class="price">$45 - $120 <span>per ticket</span></div>
+            <div class="rating">
+              <div class="stars">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star-half-alt"></i>
+              </div>
+              <div class="reviews">1,245 reviews</div>
+            </div>
+            <p>Experience scenic routes in comfort with our premium train services featuring AC and sleeper coaches.</p>
+            <ul class="features">
+              <li><i class="fas fa-check"></i> WiFi available</li>
+              <li><i class="fas fa-check"></i> Dining car</li>
+              <li><i class="fas fa-check"></i> Power outlets</li>
+            </ul>
+          </div>
+          <div class="option-footer">
+            <a href="#" class="view-details">View schedules & routes</a>
+            <a href="#" class="btn btn-secondary">Book Now</a>
+          </div>
+        </div>
+
+        <div class="transportation-option">
+          <div class="option-header">
+            <div class="option-icon">🚌</div>
+            <div class="option-title">
+              <h2>Express Buses</h2>
+              <p>Long-distance travel</p>
+            </div>
+          </div>
+          <div class="option-details">
+            <div class="price">$15 - $60 <span>per ticket</span></div>
+            <div class="rating">
+              <div class="stars">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="far fa-star"></i>
+              </div>
+              <div class="reviews">892 reviews</div>
+            </div>
+            <p>Book long-distance and local buses with real-time seat availability and tracking for your convenience.</p>
+            <ul class="features">
+              <li><i class="fas fa-check"></i> Reclining seats</li>
+              <li><i class="fas fa-check"></i> Onboard restroom</li>
+              <li><i class="fas fa-check"></i> Free cancellations</li>
+            </ul>
+          </div>
+          <div class="option-footer">
+            <a href="#" class="view-details">View schedules & routes</a>
+            <a href="#" class="btn btn-secondary">Book Now</a>
+          </div>
+        </div>
+
+        <div class="transportation-option">
+          <div class="option-header">
+            <div class="option-icon">🚗</div>
+            <div class="option-title">
+              <h2>Car Rentals</h2>
+              <p>Your schedule, your way</p>
+            </div>
+          </div>
+          <div class="option-details">
+            <div class="price">$35 - $150 <span>per day</span></div>
+            <div class="rating">
+              <div class="stars">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+              </div>
+              <div class="reviews">2,103 reviews</div>
+            </div>
+            <p>Choose from self-drive or chauffeur-driven vehicles for maximum travel flexibility during your trip.</p>
+            <ul class="features">
+              <li><i class="fas fa-check"></i> Unlimited mileage</li>
+              <li><i class="fas fa-check"></i> 24/7 roadside assistance</li>
+              <li><i class="fas fa-check"></i> Multiple pickup locations</li>
+            </ul>
+          </div>
+          <div class="option-footer">
+            <a href="#" class="view-details">View vehicle options</a>
+            <a href="#" class="btn btn-secondary">Book Now</a>
+          </div>
+        </div>
+
+        <div class="transportation-option">
+          <div class="option-header">
+            <div class="option-icon">✈️</div>
+            <div class="option-title">
+              <h2>Domestic Flights</h2>
+              <p>Fastest way to travel</p>
+            </div>
+          </div>
+          <div class="option-details">
+            <div class="price">$75 - $300 <span>per ticket</span></div>
+            <div class="rating">
+              <div class="stars">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="far fa-star"></i>
+              </div>
+              <div class="reviews">3,417 reviews</div>
+            </div>
+            <p>Quick and convenient air travel options to major destinations across the country.</p>
+            <ul class="features">
+              <li><i class="fas fa-check"></i> Multiple airlines</li>
+              <li><i class="fas fa-check"></i> Flexible dates</li>
+              <li><i class="fas fa-check"></i> Baggage options</li>
+            </ul>
+          </div>
+          <div class="option-footer">
+            <a href="#" class="view-details">View flight schedules</a>
+            <a href="#" class="btn btn-secondary">Book Now</a>
+          </div>
+        </div>
+
+        <div class="transportation-option">
+          <div class="option-header">
+            <div class="option-icon">🛳️</div>
+            <div class="option-title">
+              <h2>Cruise Packages</h2>
+              <p>Luxury on the water</p>
+            </div>
+          </div>
+          <div class="option-details">
+            <div class="price">$200 - $800 <span>per person</span></div>
+            <div class="rating">
+              <div class="stars">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star-half-alt"></i>
+              </div>
+              <div class="reviews">578 reviews</div>
+            </div>
+            <p>Experience scenic waterways and coastal destinations with our all-inclusive cruise packages.</p>
+            <ul class="features">
+              <li><i class="fas fa-check"></i> All meals included</li>
+              <li><i class="fas fa-check"></i> Onboard entertainment</li>
+              <li><i class="fas fa-check"></i> Shore excursions</li>
+            </ul>
+          </div>
+          <div class="option-footer">
+            <a href="#" class="view-details">View cruise itineraries</a>
+            <a href="#" class="btn btn-secondary">Book Now</a>
+          </div>
+        </div>
+
+        <div class="transportation-option">
+          <div class="option-header">
+            <div class="option-icon">🚖</div>
+            <div class="option-title">
+              <h2>City Transfers</h2>
+              <p>Hassle-free local travel</p>
+            </div>
+          </div>
+          <div class="option-details">
+            <div class="price">$10 - $50 <span>per ride</span></div>
+            <div class="rating">
+              <div class="stars">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+              </div>
+              <div class="reviews">4,236 reviews</div>
+            </div>
+            <p>Pre-booked taxis and private transfers to get you around the city comfortably and reliably.</p>
+            <ul class="features">
+              <li><i class="fas fa-check"></i> 24/7 availability</li>
+              <li><i class="fas fa-check"></i> Meet & greet service</li>
+              <li><i class="fas fa-check"></i> Fixed prices</li>
+            </ul>
+          </div>
+          <div class="option-footer">
+            <a href="#" class="view-details">View transfer options</a>
+            <a href="#" class="btn btn-secondary">Book Now</a>
+          </div>
+        </div>
+=======
 
       <div class="transportation-option">
         <h2>🚆 Trains</h2>
@@ -81,12 +592,26 @@
       <div class="transportation-option">
         <h2>🚗 Rental Cars</h2>
         <p>Choose from self-drive or chauffeur-driven vehicles for your travel flexibility.</p>
+
       </div>
     </section>
   </main>
 
   <footer class="footer-bottom">
-    &copy; 2025 Track Your Tour. All rights reserved.
+    <div class="footer-links">
+      <a href="#">About Us</a>
+      <a href="#">Contact</a>
+      <a href="#">Privacy Policy</a>
+      <a href="#">Terms of Service</a>
+      <a href="#">FAQ</a>
+    </div>
+    <p>&copy; 2025 Track Your Tour. All rights reserved.</p>
+    <div class="social-icons">
+      <a href="#"><i class="fab fa-facebook-f"></i></a>
+      <a href="#"><i class="fab fa-twitter"></i></a>
+      <a href="#"><i class="fab fa-instagram"></i></a>
+      <a href="#"><i class="fab fa-linkedin-in"></i></a>
+    </div>
   </footer>
 
 </body>
