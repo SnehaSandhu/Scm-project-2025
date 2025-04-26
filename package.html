@@ -3,28 +3,202 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <link rel="stylesheet" href="style.css"/>
   <title>Travel Packages | Track Your Tour</title>
+  <style>
+    /* Reset and Base Styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f9f9f9;
+      color: #333;
+      line-height: 1.6;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+/*sets the color of the back botton*/
+    .container {
+      width: 90%;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .btn-primary {
+    background-color: #fff; 
+    color: #007BFF; 
+    padding: 10px 15px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    display: inline-block;
+  }
+
+  .btn-primary:hover {
+    background-color: #e6e6e6; /* Light gray on hover */
+  }
+    /* Header */
+    .page-header {
+      background-color: #003b5c;
+      padding: 1rem 0;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .page-header .container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 1.8rem;
+      font-weight: bold;
+      color: #fff;
+    }
+
+    .nav-links {
+      list-style: none;
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+    }
+
+    .nav-links a {
+      color: #fff;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: #ffd700;
+    }
+
+    .nav-links .btn {
+      background-color: #ffd700;
+      padding: 0.5rem 1rem;
+      border-radius: 5px;
+      color: #003b5c;
+      font-weight: bold;
+    }
+
+    .nav-links .btn:hover {
+      background-color: #ffc107;
+    }
+
+    /* Hero Section */
+    .package-hero {
+      background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+                  url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e') no-repeat center center/cover;
+      color: #fff;
+      text-align: center;
+      padding: 4rem 1rem;
+    }
+
+    .package-hero .overlay {
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .package-hero h1 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .package-hero p {
+      font-size: 1.2rem;
+    }
+
+    /* Package Cards */
+    .packages {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      padding: 3rem 0;
+    }
+
+    .package-card {
+      background-color: #fff;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease;
+    }
+
+    .package-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .package-card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+
+    .package-details {
+      padding: 1.5rem;
+    }
+
+    .package-details h2 {
+      margin-bottom: 1rem;
+      color: #004466;
+    }
+
+    .package-details ul {
+      list-style: none;
+      margin-bottom: 1rem;
+    }
+
+    .package-details li {
+      margin-bottom: 0.5rem;
+    }
+
+    .package-details .price {
+      font-size: 1.2rem;
+      font-weight: bold;
+      color: #2e7d32;
+      margin-bottom: 1rem;
+    }
+
+    .package-details .btn {
+      display: inline-block;
+      background-color: #004466;
+      color: #fff;
+      padding: 0.6rem 1.2rem;
+      border-radius: 5px;
+      transition: background 0.3s;
+    }
+
+    .package-details .btn:hover {
+      background-color: #006699;
+    }
+
+    /* Footer */
+    .footer {
+      background-color: #003b5c;
+      color: #fff;
+      text-align: center;
+      padding: 1rem 0;
+      margin-top: 2rem;
+    }
+  </style>
 </head>
 <body>
 
+  <!-- Header -->
   <header class="page-header">
     <div class="container">
       <a href="index.html" class="logo">🌍 Track Your Tour</a>
-      <nav>
-        <ul class="nav-links">
-          <li><a href="index.html#home">Home</a></li>
-          <li><a href="index.html#about">About</a></li>
-          <li><a href="destination.html">Destinations</a></li>
-          <li><a href="packages.html" class="active">Packages</a></li>
-          <li><a href="transportation.html">Transportation</a></li>
-          <li><a href="contact.html" class="btn">Contact Us</a></li>
-          <li><a href="signin.html" class="btn">Sign In</a></li>
-        </ul>
-      </nav>
+      
     </div>
   </header>
 
+  <!-- Hero Section -->
   <section class="package-hero">
     <div class="overlay">
       <h1>Find Your Perfect Travel Package</h1>
@@ -32,7 +206,10 @@
     </div>
   </section>
 
+  <!-- Package Listings -->
   <section class="packages container">
+
+    <!-- Shimla -->
     <div class="package-card">
       <img src="https://static.toiimg.com/thumb/msid-52005539,width-748,height-499,resizemode=4,imgsize-187998/.jpg" alt="Shimla Tour">
       <div class="package-details">
@@ -49,6 +226,7 @@
       </div>
     </div>
 
+    <!-- Kashmir -->
     <div class="package-card">
       <img src="https://t.eucdn.in/tourism/lg/kashmir-796614.webp" alt="Kashmir Tour">
       <div class="package-details">
@@ -65,6 +243,7 @@
       </div>
     </div>
 
+    <!-- Kerala -->
     <div class="package-card">
       <img src="https://i.pinimg.com/736x/14/eb/fc/14ebfc7a8513757e9665a02b399baceb.jpg" alt="Kerala Tour">
       <div class="package-details">
@@ -80,10 +259,59 @@
         <a href="#" class="btn">Book Now</a>
       </div>
     </div>
+    <div class="package-card">
+        <img src="https://www.bizarexpedition.com/images/2022/11/product/400/16685172807.jpg" alt="Uttarakhand Tour">
+        <div class="package-details">
+          <h2>⛰️ Uttarakhand Adventure</h2>
+          <ul>
+            <li><strong>Duration:</strong> 6 Days / 5 Nights</li>
+            <li><strong>Stay:</strong> 3-star Hotel / Camps</li>
+            <li><strong>Transport:</strong> AC Coach / Cab</li>
+            <li><strong>Meals:</strong> Breakfast & Dinner</li>
+            <li><strong>Highlights:</strong> Rishikesh, Nainital, Mussoorie</li>
+          </ul>
+          <p class="price">₹10,499 per person</p>
+          <a href="#" class="btn">Book Now</a>
+        </div>
+      </div>
+      
+      <!-- Jaipur -->
+      <div class="package-card">
+        <img src="https://assets.vogue.in/photos/5ce41ea8b803113d138f5cd2/16:9/w_1920,h_1080,c_limit/Jaipur-Travel-Shopping-Restaurants.jpg" alt="Jaipur Tour">
+        <div class="package-details">
+          <h2>🏰 Jaipur Heritage Tour</h2>
+          <ul>
+            <li><strong>Duration:</strong> 3 Days / 2 Nights</li>
+            <li><strong>Stay:</strong> Heritage Hotel</li>
+            <li><strong>Transport:</strong> AC Bus / Cab</li>
+            <li><strong>Meals:</strong> Breakfast</li>
+            <li><strong>Highlights:</strong> Amber Fort, Hawa Mahal, City Palace</li>
+          </ul>
+          <p class="price">₹6,999 per person</p>
+          <a href="#" class="btn">Book Now</a>
+        </div>
+      </div>
+      
+      <!-- Mizoram -->
+      <div class="package-card">
+        <img src="https://s7ap1.scene7.com/is/image/incredibleindia/champhai-churches-champhai-mizoram-2-attr-hero?qlt=82&ts=1726674796123" alt="Mizoram Tour">
+        <div class="package-details">
+          <h2>🌿 Mystical Mizoram</h2>
+          <ul>
+            <li><strong>Duration:</strong> 5 Days / 4 Nights</li>
+            <li><strong>Stay:</strong> Eco-Resorts</li>
+            <li><strong>Transport:</strong> Local Cab / Jeep</li>
+            <li><strong>Meals:</strong> Local Cuisine Included</li>
+            <li><strong>Highlights:</strong> Aizawl, Reiek, Vantawng Falls</li>
+          </ul>
+          <p class="price">₹9,499 per person</p>
+          <a href="#" class="btn">Book Now</a>
+        </div>
+      </div>
 
-    <!-- Add more package cards as needed -->
   </section>
 
+  <!-- Footer -->
   <footer class="footer">
     <div class="container">
       <p>&copy; 2025 Track Your Tour. All rights reserved.</p>
