@@ -4,7 +4,7 @@
 
 
 ## GitHub Repository 
-[Repo Link:-](https://github.com/SnehaSandhu/Scm-project-2025.git)
+[SCM PROJECT Repo Link](https://github.com/SnehaSandhu/Scm-project-2025.git)
 
 
 ## ✨ Features
