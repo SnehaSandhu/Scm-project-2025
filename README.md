@@ -1,10 +1,12 @@
-                                                                                         ** `` Track Your Travel `` **
+ ** `` Track Your Travel `` **
 
 **Track Your Travel** is a travel logging application that allows users to record, manage, and view their travel history. Users can add destinations, save notes, and view trips on this site 
 
 
+ 
 ## GitHub Repository 
 [SCM PROJECT Repo Link](https://github.com/SnehaSandhu/Scm-project-2025.git)
+
 
 
 ## ✨ Features
@@ -14,13 +16,16 @@
 - Simple and user-friendly interface
 
 
+
 ## 📸 Screenshots
 [image](https://github.com/user-attachments/assets/2a23cfe7-d44f-41e7-b0e0-a229c1889b36)
+
 
 
 ## 🛠 Technologies Used
 - Frontend: 
       -> html , css , javascript
+
 
 
 ## 👥 Contributors
