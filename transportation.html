@@ -1,348 +1,116 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Transportation - Track Your Tour</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"/>
   <style>
-    :root {
-      --primary-color: #007BFF;
-      --secondary-color: #0056b3;
-      --accent-color: #FF5722;
-      --light-gray: #f8f9fa;
-      --dark-gray: #343a40;
-    }
-    
     body {
       margin: 0;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       background: #f4f4f4;
       color: #333;
-      line-height: 1.6;
     }
 
     header {
-      background: var(--primary-color);
+      background: #007BFF;
       padding: 15px 20px;
       color: #fff;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     }
 
     .logo {
-      text-decoration: none;
       font-size: 24px;
       font-weight: bold;
-      color: #fff;
-      display: flex;
-      align-items: center;
-    }
-
-    .logo i {
-      margin-right: 10px;
-    }
-
-    .btn {
-      display: inline-block;
-      padding: 10px 20px;
-      border-radius: 5px;
       text-decoration: none;
-      font-weight: 500;
-      transition: all 0.3s ease;
-    }
-
-    .btn-primary {
-      background: #fff;
-      color: var(--primary-color);
-    }
-
-    .btn-primary:hover {
-      background: var(--light-gray);
-    }
-
-    .btn-secondary {
-      background: var(--accent-color);
       color: white;
     }
 
-    .btn-secondary:hover {
-      background: #e04a1d;
+    .btn {
+      background: #fff;
+      color: #007BFF;
+      padding: 10px 15px;
+      text-decoration: none;
+      border-radius: 5px;
     }
 
-    .transportation-section {
+    main {
       padding: 40px 20px;
       max-width: 1200px;
       margin: auto;
     }
 
-    .transportation-section h1 {
+    h1 {
       text-align: center;
       margin-bottom: 30px;
-      color: var(--dark-gray);
-      position: relative;
-      padding-bottom: 15px;
-    }
-
-    .transportation-section h1:after {
-      content: "";
-      position: absolute;
-      bottom: 0;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 100px;
-      height: 3px;
-      background: var(--primary-color);
-    }
-
-    .search-filter {
-      background: white;
-      padding: 20px;
-      border-radius: 10px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-      margin-bottom: 30px;
-    }
-
-    .search-filter h2 {
-      margin-top: 0;
-      font-size: 1.2rem;
-      color: var(--dark-gray);
-    }
-
-    .filter-group {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 15px;
-      margin-bottom: 15px;
-    }
-
-    .filter-option {
-      padding: 8px 15px;
-      background: var(--light-gray);
-      border-radius: 20px;
-      cursor: pointer;
-      transition: all 0.3s;
-      font-size: 0.9rem;
-    }
-
-    .filter-option:hover, .filter-option.active {
-      background: var(--primary-color);
-      color: white;
-    }
-
-    .search-bar {
-      display: flex;
-      margin-top: 15px;
-    }
-
-    .search-bar input {
-      flex: 1;
-      padding: 10px 15px;
-      border: 1px solid #ddd;
-      border-radius: 5px 0 0 5px;
-      font-size: 1rem;
-    }
-
-    .search-bar button {
-      padding: 10px 20px;
-      background: var(--primary-color);
-      color: white;
-      border: none;
-      border-radius: 0 5px 5px 0;
-      cursor: pointer;
-      transition: background 0.3s;
-    }
-
-    .search-bar button:hover {
-      background: var(--secondary-color);
     }
 
     .transportation-options {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-      gap: 25px;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
     }
 
-    .transportation-option {
-      background: #fff;
-      border-radius: 10px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-      overflow: hidden;
-      transition: transform 0.3s, box-shadow 0.3s;
+    .transport-card {
+      background: white;
+      border-radius: 8px;
+      padding: 20px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      transition: 0.3s;
     }
 
-    .transportation-option:hover {
+    .transport-card:hover {
       transform: translateY(-5px);
-      box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
     }
 
-    .option-header {
-      padding: 20px;
-      border-bottom: 1px solid #eee;
-      display: flex;
-      align-items: center;
+    .transport-card i {
+      font-size: 40px;
+      color: #007BFF;
+      margin-bottom: 10px;
     }
 
-    .option-icon {
-      font-size: 2rem;
-      margin-right: 15px;
-      color: var(--primary-color);
+    .transport-card h2 {
+      margin: 10px 0 5px;
     }
 
-    .option-title {
-      flex: 1;
-    }
-
-    .option-title h2 {
-      margin: 0;
-      color: var(--dark-gray);
-      font-size: 1.3rem;
-    }
-
-    .option-title p {
-      margin: 5px 0 0;
+    .transport-card p {
+      font-size: 0.95rem;
       color: #666;
-      font-size: 0.9rem;
-    }
-
-    .option-details {
-      padding: 20px;
-    }
-
-    .option-details p {
-      margin: 0 0 15px;
     }
 
     .price {
-      font-size: 1.5rem;
+      font-size: 1.1rem;
       font-weight: bold;
-      color: var(--primary-color);
-      margin-bottom: 15px;
+      color: #28a745;
+      margin-top: 10px;
     }
 
-    .price span {
-      font-size: 0.9rem;
-      font-weight: normal;
-      color: #666;
-    }
-
-    .rating {
-      display: flex;
-      align-items: center;
-      margin-bottom: 15px;
-    }
-
-    .stars {
-      color: #FFC107;
-      margin-right: 10px;
-    }
-
-    .reviews {
-      color: #666;
-      font-size: 0.9rem;
-    }
-
-    .features {
-      margin: 15px 0;
-      padding: 0;
-      list-style: none;
-    }
-
-    .features li {
-      padding: 5px 0;
-      display: flex;
-      align-items: center;
-    }
-
-    .features i {
-      margin-right: 8px;
-      color: var(--primary-color);
-      font-size: 0.9rem;
-    }
-
-    .option-footer {
-      padding: 15px 20px;
-      background: var(--light-gray);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .view-details {
-      color: var(--primary-color);
-      text-decoration: none;
-      font-weight: 500;
-      font-size: 0.9rem;
-      transition: color 0.3s;
-    }
-
-    .view-details:hover {
-      color: var(--secondary-color);
-      text-decoration: underline;
-    }
-
-    footer.footer-bottom {
+    footer {
       text-align: center;
       padding: 30px 20px;
-      background: var(--dark-gray);
+      background: #343a40;
       color: #fff;
-      margin-top: 50px;
-    }
-
-    .footer-links {
-      display: flex;
-      justify-content: center;
-      gap: 20px;
-      margin-bottom: 15px;
+      margin-top: 40px;
     }
 
     .footer-links a {
-      color: #fff;
+      color: white;
+      margin: 0 10px;
       text-decoration: none;
-      transition: color 0.3s;
     }
 
     .footer-links a:hover {
-      color: var(--primary-color);
+      text-decoration: underline;
     }
 
-    .social-icons {
-      margin-top: 15px;
-    }
-
-    .social-icons a {
-      color: white;
-      margin: 0 10px;
-      font-size: 1.2rem;
-      transition: color 0.3s;
-    }
-
-    .social-icons a:hover {
-      color: var(--primary-color);
-    }
-
-    @media (max-width: 768px) {
-      .transportation-options {
-        grid-template-columns: 1fr;
-      }
-      
-      .filter-group {
-        flex-direction: column;
-      }
-      
-      .search-bar {
-        flex-direction: column;
-      }
-      
-      .search-bar input {
-        border-radius: 5px;
-        margin-bottom: 10px;
-      }
-      
-      .search-bar button {
-        border-radius: 5px;
+    @media (max-width: 600px) {
+      .transport-card {
+        text-align: center;
       }
     }
   </style>
@@ -350,33 +118,19 @@
 <body>
 
   <header>
-    <a href="index.html" class="logo">
-      <i class="fas fa-route"></i> Track Your Tour
-    </a>
-    <a href="index.html" class="btn btn-primary">
-      <i class="fas fa-arrow-left"></i> Back to Home
-    </a>
+    <a href="index.html" class="logo"><i class="fas fa-route"></i> Track Your Tour</a>
+    <a href="index.html" class="btn"><i class="fas fa-arrow-left"></i> Back to Home</a>
   </header>
 
   <main>
-    <section class="transportation-section">
-      <h1>Transportation Options</h1>
-
+    <h1>Choose Your Transportation</h1>
+    <div class="transportation-options">
       
-      <div class="search-filter">
-        <h2>Find your perfect travel option</h2>
-        <div class="filter-group">
-          <div class="filter-option active">All</div>
-          <div class="filter-option">Trains</div>
-          <div class="filter-option">Buses</div>
-          <div class="filter-option">Rental Cars</div>
-          <div class="filter-option">Flights</div>
-          <div class="filter-option">Cruises</div>
-        </div>
-        <div class="search-bar">
-          <input type="text" placeholder="Search by destination, provider, or type...">
-          <button type="submit"><i class="fas fa-search"></i> Search</button>
-        </div>
+      <div class="transport-card">
+        <i class="fas fa-train"></i>
+        <h2>Trains</h2>
+        <p>Comfortable and scenic train journeys to your destination.</p>
+        <div class="price">Starting from ₹500</div>
       </div>
 
       <div class="transportation-options">
@@ -582,36 +336,30 @@
       <div class="transportation-option">
         <h2>🚆 Trains</h2>
         <p>Comfortable train journeys with AC and sleeper coaches to explore scenic routes.</p>
+      <div class="transport-card">
+        <i class="fas fa-bus"></i>
+        <h2>Buses</h2>
+        <p>Budget-friendly and frequent bus services across major routes.</p>
+        <div class="price">Starting from ₹300</div>
       </div>
 
-      <div class="transportation-option">
-        <h2>🚌 Buses</h2>
-        <p>Book long-distance and local buses with real-time seat availability and tracking.</p>
+      <div class="transport-card">
+        <i class="fas fa-car-side"></i>
+        <h2>Rental Cars</h2>
+        <p>Rent a car for personalized, flexible, and private travel.</p>
+        <div class="price">Starting from ₹1200/day</div>
       </div>
 
-      <div class="transportation-option">
-        <h2>🚗 Rental Cars</h2>
-        <p>Choose from self-drive or chauffeur-driven vehicles for your travel flexibility.</p>
-
-      </div>
-    </section>
+    </div>
   </main>
 
-  <footer class="footer-bottom">
+  <footer>
     <div class="footer-links">
-      <a href="#">About Us</a>
+      <a href="#">About</a>
       <a href="#">Contact</a>
-      <a href="#">Privacy Policy</a>
-      <a href="#">Terms of Service</a>
-      <a href="#">FAQ</a>
+      <a href="#">Privacy</a>
     </div>
     <p>&copy; 2025 Track Your Tour. All rights reserved.</p>
-    <div class="social-icons">
-      <a href="#"><i class="fab fa-facebook-f"></i></a>
-      <a href="#"><i class="fab fa-twitter"></i></a>
-      <a href="#"><i class="fab fa-instagram"></i></a>
-      <a href="#"><i class="fab fa-linkedin-in"></i></a>
-    </div>
   </footer>
 
 </body>
