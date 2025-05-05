@@ -19,6 +19,10 @@
       display: flex;
       align-items: center;
       justify-content: center;
+      background-image: url("https://ibighit.com/bts/images/bts/discography/jin/echo/ui/polaroid.jpg");
+      background-size: cover;
+      background-position: center;
+
     }
 
     #bg-video {
@@ -43,7 +47,7 @@
 
     .signin-box h2 {
       text-align: center;
-      color: #fff;
+      color: #ffff;
       margin-bottom: 30px;
     }
 
@@ -106,6 +110,13 @@
       font-size: 0.95rem;
       transition: color 0.2s ease;
     }
+
+    .centered-link {
+      display: flex;
+      justify-content: center;
+      margin-top: 1rem;
+    }
+
     .back-home-btn:hover {
       color: #0056b3;
       text-decoration: underline;
@@ -113,10 +124,6 @@
   </style>
 </head>
 <body>
-  <video autoplay muted loop id="bg-video">
-    <source src="https://videos.pexels.com/video-files/2169879/2169879-uhd_2560_1440_30fps.mp4" />
-    Your browser does not support the video tag.
-  </video>
   <div class="signin-container">
     <div class="signin-box">
       <h2>Sign In</h2>
@@ -133,7 +140,10 @@
         <i class="fab fa-twitter" title="Twitter"></i>
       </div>
 
-      <a href="index.html" class="back-home-btn">← Back To Home</a>
+      <div class="centered-link">
+        <a href="index.html" class="back-home-btn">← Back To Home</a>
+      </div>
+      
       <p>Don't have an account? <a href="#">Register</a></p>
     </div>
   </div>
