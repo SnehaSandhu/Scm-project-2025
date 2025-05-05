@@ -1,0 +1,768 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Global Travel Highlights - Explore the World</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --primary-color: #2c3e50;
+      --secondary-color: #3498db;
+      --accent-color: #e74c3c;
+      --light-color: #ecf0f1;
+      --dark-color: #2c3e50;
+      --text-color: #333;
+      --text-light: #7f8c8d;
+      --shadow: 0 10px 20px rgba(0,0,0,0.1);
+      --transition: all 0.3s ease;
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f9f9f9;
+      color: var(--text-color);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+    
+    .dest {
+      padding: 80px 20px;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .dest:nth-child(even) {
+      background-color: white;
+    }
+    
+    .headings {
+      text-align: center;
+      font-size: 2.8rem;
+      margin-bottom: 50px;
+      color: var(--primary-color);
+      position: relative;
+      display: inline-block;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+    
+    .headings::after {
+      content: '';
+      position: absolute;
+      bottom: -15px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 4px;
+      background: var(--secondary-color);
+      border-radius: 2px;
+    }
+    
+    .card-container {
+      display: flex;
+      gap: 30px;
+      flex-wrap: wrap;
+      justify-content: center;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+    
+    .card {
+      background: #fff;
+      border-radius: 15px;
+      padding: 30px;
+      width: 350px;
+      box-shadow: var(--shadow);
+      opacity: 0;
+      transform: translateY(50px);
+      transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      transition: var(--transition);
+      border: 1px solid rgba(0,0,0,0.05);
+    }
+    
+    .card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+    }
+    
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 5px;
+      background: linear-gradient(90deg, var(--secondary-color), var(--accent-color));
+    }
+    
+    .card.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    
+    .card h3 {
+      font-size: 1.5rem;
+      margin-bottom: 20px;
+      color: var(--primary-color);
+      position: relative;
+      padding-bottom: 10px;
+    }
+    
+    .card h3::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 50px;
+      height: 2px;
+      background: var(--secondary-color);
+    }
+    
+    .card p {
+      color: var(--text-light);
+      margin-bottom: 20px;
+      font-size: 1rem;
+    }
+    
+    .videosize {
+      width: 100%;
+      height: 200px;
+      border-radius: 10px;
+      margin-bottom: 20px;
+      object-fit: cover;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      transition: var(--transition);
+    }
+    
+    .card:hover .videosize {
+      transform: scale(1.02);
+    }
+    
+    .icon-container {
+      width: 80px;
+      height: 80px;
+      background: linear-gradient(135deg, var(--secondary-color), var(--accent-color));
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
+      color: white;
+      font-size: 2rem;
+      box-shadow: 0 5px 15px rgba(52, 152, 219, 0.3);
+    }
+    
+    .btn {
+      display: inline-block;
+      background: var(--secondary-color);
+      color: white;
+      padding: 10px 25px;
+      border-radius: 50px;
+      text-decoration: none;
+      margin-top: auto;
+      font-weight: 600;
+      transition: var(--transition);
+      border: 2px solid var(--secondary-color);
+    }
+    
+    .btn:hover {
+      background: transparent;
+      color: var(--secondary-color);
+    }
+    
+    .rating {
+      display: flex;
+      margin: 15px 0;
+      color: #f1c40f;
+    }
+    
+    .price {
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--accent-color);
+      margin: 10px 0;
+    }
+    
+    .price span {
+      font-size: 1rem;
+      color: var(--text-light);
+      font-weight: normal;
+    }
+    
+    .tag {
+      position: absolute;
+      top: 20px;
+      right: -30px;
+      background: var(--accent-color);
+      color: white;
+      padding: 5px 30px;
+      transform: rotate(45deg);
+      font-size: 0.8rem;
+      font-weight: bold;
+    }
+    
+    .testimonial {
+      font-style: italic;
+      position: relative;
+      padding: 0 20px;
+      margin: 15px 0;
+    }
+    
+    .testimonial::before,
+    .testimonial::after {
+      content: '"';
+      font-size: 2rem;
+      color: var(--secondary-color);
+      opacity: 0.5;
+    }
+    
+    .testimonial::before {
+      position: absolute;
+      left: -5px;
+      top: -15px;
+    }
+    
+    .testimonial::after {
+      position: absolute;
+      right: -5px;
+      bottom: -25px;
+    }
+    
+    .author {
+      font-weight: bold;
+      color: var(--primary-color);
+    }
+    
+    /* Navigation */
+    .nav-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background: rgba(255,255,255,0.95);
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      z-index: 1000;
+      padding: 15px 0;
+      transition: var(--transition);
+    }
+    
+    .nav-container.scrolled {
+      padding: 10px 0;
+      background: rgba(255,255,255,0.98);
+    }
+    
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+    
+    .logo {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: var(--primary-color);
+      text-decoration: none;
+    }
+    
+    .logo span {
+      color: var(--secondary-color);
+    }
+    
+    .nav-links {
+      display: flex;
+      list-style: none;
+    }
+    
+    .nav-links li {
+      margin-left: 30px;
+    }
+    
+    .nav-links a {
+      text-decoration: none;
+      color: var(--primary-color);
+      font-weight: 600;
+      transition: var(--transition);
+      position: relative;
+    }
+    
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--secondary-color);
+      transition: var(--transition);
+    }
+    
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+    
+    /* Hero Section */
+    .hero {
+      height: 100vh;
+      background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?ixlib=rb-1.2.1&auto=format&fit=crop&w=1400&q=80');
+      background-size: cover;
+      background-position: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: white;
+      padding: 0 20px;
+    }
+    
+    .hero-content {
+      max-width: 800px;
+    }
+    
+    .hero h1 {
+      font-size: 3.5rem;
+      margin-bottom: 20px;
+      text-shadow: 0 2px 5px rgba(0,0,0,0.3);
+    }
+    
+    .hero p {
+      font-size: 1.2rem;
+      margin-bottom: 30px;
+      text-shadow: 0 1px 3px rgba(0,0,0,0.3);
+    }
+    
+    .hero-btn {
+      display: inline-block;
+      background: var(--secondary-color);
+      color: white;
+      padding: 12px 30px;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1.1rem;
+      transition: var(--transition);
+      border: 2px solid var(--secondary-color);
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    }
+    
+    .hero-btn:hover {
+      background: transparent;
+      transform: translateY(-3px);
+    }
+    
+    /* Footer */
+    footer {
+      background: var(--dark-color);
+      color: white;
+      padding: 60px 0 20px;
+      text-align: center;
+    }
+    
+    .footer-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+      text-align: left;
+      padding: 0 20px;
+    }
+    
+    .footer-section {
+      flex: 1;
+      min-width: 300px;
+      margin-bottom: 30px;
+      padding: 0 20px;
+    }
+    
+    .footer-section h3 {
+      font-size: 1.3rem;
+      margin-bottom: 20px;
+      position: relative;
+      padding-bottom: 10px;
+    }
+    
+    .footer-section h3::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 50px;
+      height: 2px;
+      background: var(--secondary-color);
+    }
+    
+    .footer-section p {
+      margin-bottom: 15px;
+      color: #bdc3c7;
+    }
+    
+    .social-links a {
+      display: inline-block;
+      color: white;
+      font-size: 1.2rem;
+      margin-right: 15px;
+      transition: var(--transition);
+    }
+    
+    .social-links a:hover {
+      color: var(--secondary-color);
+      transform: translateY(-3px);
+    }
+    
+    .footer-bottom {
+      text-align: center;
+      padding-top: 20px;
+      border-top: 1px solid rgba(255,255,255,0.1);
+      margin-top: 30px;
+      color: #bdc3c7;
+      font-size: 0.9rem;
+    }
+    
+    /* Responsive */
+    @media (max-width: 768px) {
+      .headings {
+        font-size: 2.2rem;
+      }
+      
+      .hero h1 {
+        font-size: 2.5rem;
+      }
+      
+      .nav-links {
+        display: none;
+      }
+      
+      .card {
+        width: 100%;
+        max-width: 400px;
+      }
+    }
+    
+    /* Animations */
+    @keyframes float {
+      0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-10px);
+      }
+    }
+    
+    .floating {
+      animation: float 3s ease-in-out infinite;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Navigation -->
+  <div class="nav-container">
+    <nav>
+      <a href="#" class="logo">Travel<span>Ease</span></a>
+      <ul class="nav-links">
+        <li><a href="#destination">Destinations</a></li>
+        <li><a href="#activities">Activities</a></li>
+        <li><a href="#plan">Travel Tips</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Discover Your Next Adventure</h1>
+      <p>Explore breathtaking destinations, immerse in diverse cultures, and create unforgettable memories around the globe.</p>
+      <a href="#destination" class="hero-btn">Explore Destinations</a>
+    </div>
+  </section>
+
+  <!-- Destination Highlights -->
+  <section class="dest" id="destination">
+    <h2 class="headings">Destination Highlights</h2>
+    
+    <div class="card-container">
+      <div class="card">
+        <div class="icon-container">
+          <i class="fas fa-mountain"></i>
+        </div>
+        <h3>Beautiful Landscapes</h3>
+        <video class="videosize" autoplay muted loop playsinline loading="lazy" aria-label="Video showcasing beautiful landscapes">
+          <source src="https://videos.pexels.com/video-files/2040075/2040075-sd_640_360_24fps.mp4" type="video/mp4" />
+        </video>    
+        <p>From majestic mountains to pristine beaches, experience nature's most stunning vistas that will take your breath away.</p>
+        <div class="rating">
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star-half-alt"></i>
+          <span>(1,243 reviews)</span>
+        </div>
+        <a href="#" class="btn">Explore More</a>
+      </div>
+
+      <div class="card">
+        <div class="tag">Popular</div>
+        <div class="icon-container">
+          <i class="fas fa-landmark"></i>
+        </div>
+        <h3>Rich Culture</h3>
+        <video class="videosize" autoplay muted loop playsinline loading="lazy" aria-label="Video showcasing rich cultural experiences">
+          <source src="https://videos.pexels.com/video-files/29936509/12848585_640_360_30fps.mp4" type="video/mp4" />
+        </video> 
+        <p>Immerse yourself in vibrant traditions, ancient architecture, and local customs that have been preserved for generations.</p>
+        <div class="testimonial">"The cultural immersion was the highlight of our trip. Truly life-changing!"</div>
+        <div class="author">- Sarah J.</div>
+        <a href="#" class="btn">Learn Culture</a>
+      </div>
+
+      <div class="card">
+        <div class="icon-container">
+          <i class="fas fa-utensils"></i>
+        </div>
+        <h3>Local Cuisine</h3>
+        <video class="videosize" autoplay muted loop playsinline loading="lazy" aria-label="Video showcasing local cuisine">
+          <source src="https://videos.pexels.com/video-files/7772225/7772225-sd_640_360_24fps.mp4" type="video/mp4" />
+        </video>
+        <p>Indulge in authentic flavors, from street food to gourmet dining, that tell the story of the region's history and people.</p>
+        <div class="price">$45 <span>per person</span></div>
+        <a href="#" class="btn">Food Tours</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Top Things To Do -->
+  <section class="dest" id="activities">
+    <h2 class="headings">Top Things To Do</h2>
+
+    <div class="card-container">
+      <div class="card">
+        <div class="icon-container">
+          <i class="fas fa-camera"></i>
+        </div>
+        <h3>Must-See Attractions</h3>
+        <p>Discover iconic landmarks, hidden gems, and UNESCO World Heritage sites that define the destination's character.</p>
+        <ul style="text-align: left; width: 100%; margin: 15px 0; color: var(--text-light);">
+          <li>Historic city tours</li>
+          <li>Museum visits</li>
+          <li>Architectural wonders</li>
+        </ul>
+        <a href="#" class="btn">View Tours</a>
+      </div>
+
+      <div class="card">
+        <div class="icon-container floating">
+          <i class="fas fa-hiking"></i>
+        </div>
+        <h3>Outdoor Adventures</h3>
+        <p>Challenge yourself with thrilling activities surrounded by nature's beauty, from gentle hikes to extreme sports.</p>
+        <ul style="text-align: left; width: 100%; margin: 15px 0; color: var(--text-light);">
+          <li>Hiking & trekking</li>
+          <li>Water sports</li>
+          <li>Wildlife safaris</li>
+        </ul>
+        <a href="#" class="btn">Book Adventure</a>
+      </div>
+
+      <div class="card">
+        <div class="icon-container">
+          <i class="fas fa-moon"></i>
+        </div>
+        <h3>Nightlife & Entertainment</h3>
+        <p>Experience the destination after dark with vibrant clubs, cultural performances, and moonlit experiences.</p>
+        <ul style="text-align: left; width: 100%; margin: 15px 0; color: var(--text-light);">
+          <li>Live music venues</li>
+          <li>Theater shows</li>
+          <li>Night markets</li>
+        </ul>
+        <a href="#" class="btn">Night Experiences</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Travel Tips -->
+  <section id="plan" class="dest">
+    <h2 class="headings">Travel Tips</h2>
+
+    <div class="card-container">
+      <div class="card">
+        <div class="icon-container">
+          <i class="fas fa-calendar-alt"></i>
+        </div>
+        <h3>Best Time to Visit</h3>
+        <p>Plan your trip during ideal seasons for perfect weather, fewer crowds, and special local events and festivals.</p>
+        <div style="margin-top: auto; width: 100%;">
+          <div style="background: #f1f1f1; border-radius: 10px; padding: 15px; margin-top: 15px;">
+            <div style="display: flex; justify-content: space-between; margin-bottom: 5px;">
+              <span>High Season:</span>
+              <span style="font-weight: bold; color: var(--accent-color);">Nov-Feb</span>
+            </div>
+            <div style="display: flex; justify-content: space-between;">
+              <span>Shoulder Season:</span>
+              <span style="font-weight: bold; color: var(--secondary-color);">Mar-May</span>
+            </div>
+          </div>
+        </div>
+        <a href="#" class="btn">Season Guide</a>
+      </div>
+
+      <div class="card">
+        <div class="icon-container">
+          <i class="fas fa-subway"></i>
+        </div>
+        <h3>Getting Around</h3>
+        <p>Navigate like a local with our comprehensive guide to public transport, taxis, bike rentals, and walking routes.</p>
+        <div style="margin-top: auto; width: 100%;">
+          <div style="display: flex; justify-content: space-around; margin-top: 20px;">
+            <div style="text-align: center;">
+              <i class="fas fa-bus" style="font-size: 1.5rem; color: var(--secondary-color);"></i>
+              <div style="font-size: 0.8rem;">Public Transit</div>
+            </div>
+            <div style="text-align: center;">
+              <i class="fas fa-taxi" style="font-size: 1.5rem; color: var(--secondary-color);"></i>
+              <div style="font-size: 0.8rem;">Taxis</div>
+            </div>
+            <div style="text-align: center;">
+              <i class="fas fa-bicycle" style="font-size: 1.5rem; color: var(--secondary-color);"></i>
+              <div style="font-size: 0.8rem;">Bike Rentals</div>
+            </div>
+          </div>
+        </div>
+        <a href="#" class="btn">Transport Guide</a>
+      </div>
+
+      <div class="card">
+        <div class="icon-container">
+          <i class="fas fa-hands-helping"></i>
+        </div>
+        <h3>Local Etiquette</h3>
+        <p>Respect cultural norms with our essential guide to greetings, dress codes, tipping, and social customs.</p>
+        <div style="margin-top: auto; width: 100%;">
+          <div style="background: #f8f9fa; border-radius: 10px; padding: 15px; margin-top: 15px; font-size: 0.9rem;">
+            <div style="display: flex; align-items: center; margin-bottom: 10px;">
+              <i class="fas fa-check-circle" style="color: #2ecc71; margin-right: 10px;"></i>
+              <span>Modest dress at religious sites</span>
+            </div>
+            <div style="display: flex; align-items: center; margin-bottom: 10px;">
+              <i class="fas fa-check-circle" style="color: #2ecc71; margin-right: 10px;"></i>
+              <span>Remove shoes when entering homes</span>
+            </div>
+            <div style="display: flex; align-items: center;">
+              <i class="fas fa-check-circle" style="color: #2ecc71; margin-right: 10px;"></i>
+              <span>10-15% tipping in restaurants</span>
+            </div>
+          </div>
+        </div>
+        <a href="#" class="btn">Cultural Guide</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer id="contact">
+    <div class="footer-content">
+      <div class="footer-section">
+        <h3>About TravelEase</h3>
+        <p>We're dedicated to helping travelers discover authentic experiences and create meaningful connections around the world.</p>
+        <div class="social-links">
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-pinterest"></i></a>
+        </div>
+      </div>
+      
+      <div class="footer-section">
+        <h3>Quick Links</h3>
+        <p><a href="#" style="color: #bdc3c7; text-decoration: none;">Destination Guides</a></p>
+        <p><a href="#" style="color: #bdc3c7; text-decoration: none;">Travel Blog</a></p>
+        <p><a href="#" style="color: #bdc3c7; text-decoration: none;">Special Offers</a></p>
+        <p><a href="#" style="color: #bdc3c7; text-decoration: none;">Group Tours</a></p>
+      </div>
+      
+      <div class="footer-section">
+        <h3>Contact Us</h3>
+        <p><i class="fas fa-map-marker-alt" style="margin-right: 10px;"></i> 123 Travel St, Wanderlust City</p>
+        <p><i class="fas fa-phone" style="margin-right: 10px;"></i> +1 (555) 123-4567</p>
+        <p><i class="fas fa-envelope" style="margin-right: 10px;"></i> info@travelease.com</p>
+      </div>
+    </div>
+    
+    <div class="footer-bottom">
+      <p>&copy; 2023 TravelEase. All rights reserved. | Privacy Policy | Terms of Service</p>
+    </div>
+  </footer>
+
+  <script>
+    // Intersection Observer for card animations
+    const cards = document.querySelectorAll('.card');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('show');
+        }
+      });
+    }, {
+      threshold: 0.1
+    });
+
+    cards.forEach(card => {
+      observer.observe(card);
+    });
+    
+    // Navbar scroll effect
+    const navbar = document.querySelector('.nav-container');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 100) {
+        navbar.classList.add('scrolled');
+      } else {
+        navbar.classList.remove('scrolled');
+      }
+    });
+    
+    // Smooth scrolling for navigation links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+          behavior: 'smooth'
+        });
+      });
+    });
+    
+    // Lazy loading for videos
+    const lazyVideos = document.querySelectorAll('video[loading="lazy"]');
+    const videoObserver = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const video = entry.target;
+          video.load();
+          observer.unobserve(video);
+        }
+      });
+    }, {rootMargin: '200px'});
+    
+    lazyVideos.forEach(video => {
+      videoObserver.observe(video);
+    });
+  </script>
+</body>
+</html>
