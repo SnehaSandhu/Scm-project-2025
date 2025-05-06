@@ -337,7 +337,6 @@ border-top: 1px solid #555;
 padding-top: 15px;
 font-size: 0.9rem;
 }
-
 a {
 color: #ffa600;
 }
@@ -345,7 +344,6 @@ h2, h3 , li {
 cursor: pointer;
 transition: transform 0.3s ease, color 0.3s ease;
 }
-
 h2:hover, h3:hover , li:hover {
 transform: translateX(5px) scale(1.1);
 color:#ffa600;
@@ -406,7 +404,6 @@ color: var(--secondary);
 .btn:hover {
   background-color: #0056b3;
 }
-
 html {
   scroll-behavior: smooth;
 }
