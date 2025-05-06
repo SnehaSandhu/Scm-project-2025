@@ -1,182 +1,587 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Book your transportation with Track Your Tour - trains, buses, rental cars, flights, cruises, and city transfers.">
+  <meta name="keywords" content="travel, transportation, booking, tour, trains, buses, rental cars, flights, cruises, transfers">
+  <meta name="author" content="Track Your Tour">
   <title>Transportation - Track Your Tour</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <style>
-    body {
+    /* General Reset and Base Styles */
+    * {
       margin: 0;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: #f4f4f4;
-      color: #333;
+      padding: 0;
+      box-sizing: border-box;
     }
 
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #f0f4f8, #d9e2ec);
+      color: #2d3436;
+      line-height: 1.6;
+      overflow-x: hidden;
+      scroll-behavior: smooth;
+      animation: gradientBG 15s ease infinite;
+      background-size: 200% 200%;
+    }
+
+    @keyframes gradientBG {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    /* Header Styles */
     header {
-      background: #007BFF;
-      padding: 15px 20px;
+      background: linear-gradient(90deg, #0984e3, #00b894);
+      padding: 20px 30px;
       color: #fff;
       display: flex;
       justify-content: space-between;
       align-items: center;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
     }
 
     .logo {
-      font-size: 24px;
-      font-weight: bold;
+      font-size: 1.8rem;
+      font-weight: 700;
       text-decoration: none;
-      color: white;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      transition: transform 0.3s;
+    }
+
+    .logo:hover {
+      transform: scale(1.05);
     }
 
     .btn {
       background: #fff;
-      color: #007BFF;
-      padding: 10px 15px;
+      color: #0984e3;
+      padding: 12px 20px;
       text-decoration: none;
-      border-radius: 5px;
+      border-radius: 25px;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      gap: 8px;
     }
 
+    .btn:hover {
+      background: #0984e3;
+      color: #fff;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Main Content Styles */
     main {
-      padding: 40px 20px;
       max-width: 1200px;
-      margin: auto;
+      margin: 0 auto;
+      padding: 50px 20px;
     }
 
     h1 {
       text-align: center;
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin-bottom: 20px;
+      color: #2d3436;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Filter and Sort Controls */
+    .controls {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
       margin-bottom: 30px;
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+
+    .controls select {
+      padding: 10px;
+      border-radius: 8px;
+      border: 1px solid #0984e3;
+      font-size: 1rem;
+      background: #fff;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .controls select:focus {
+      outline: none;
+      border-color: #00b894;
+      box-shadow: 0 0 5px rgba(0, 184, 148, 0.5);
     }
 
     .transportation-options {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 20px;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
     }
 
     .transport-card {
-      background: white;
-      border-radius: 8px;
-      padding: 20px;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-      transition: 0.3s;
+      background: #fff;
+      border-radius: 12px;
+      padding: 25px;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
       text-align: center;
+      transition: all 0.4s ease;
+      position: relative;
+      overflow: hidden;
+      border: 2px solid transparent;
     }
 
     .transport-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      transform: translateY(-10px) scale(1.02);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+      border-color: #0984e3;
     }
 
     .transport-card i {
-      font-size: 40px;
-      color: #007BFF;
-      margin-bottom: 10px;
+      font-size: 3rem;
+      color: #00b894;
+      margin-bottom: 15px;
+      transition: transform 0.3s;
+    }
+
+    .transport-card:hover i {
+      transform: rotate(10deg) scale(1.1);
+    }
+
+    .badge {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: #d63031;
+      color: #fff;
+      padding: 5px 10px;
+      border-radius: 12px;
+      font-size: 0.8rem;
+      font-weight: 600;
     }
 
     .transport-card h2 {
-      margin: 10px 0 5px;
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin: 10px 0 8px;
+      color: #2d3436;
     }
 
     .transport-card p {
-      font-size: 0.95rem;
-      color: #666;
+      font-size: 1rem;
+      color: #636e72;
+      margin-bottom: 15px;
     }
 
     .price {
-      font-size: 1.1rem;
-      font-weight: bold;
-      color: #28a745;
-      margin-top: 10px;
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: #d63031;
+      margin-bottom: 20px;
     }
 
-    footer {
-      text-align: center;
-      padding: 30px 20px;
-      background: #343a40;
+    .book-now {
+      display: inline-block;
+      background: #0984e3;
       color: #fff;
-      margin-top: 40px;
+      padding: 10px 20px;
+      border-radius: 25px;
+      text-decoration: none;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+
+    .book-now:hover {
+      background: #00b894;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Modal Styles */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.7);
+      z-index: 2000;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .modal-content {
+      background: #fff;
+      border-radius: 12px;
+      padding: 30px;
+      max-width: 500px;
+      width: 90%;
+      position: relative;
+      animation: slideIn 0.3s ease;
+    }
+
+    @keyframes slideIn {
+      from { transform: translateY(-50px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    .modal-content h2 {
+      font-size: 1.8rem;
+      margin-bottom: 20px;
+      color: #2d3436;
+    }
+
+    .modal-content label {
+      display: block;
+      font-size: 1rem;
+      margin: 10px 0 5px;
+      color: #2d3436;
+    }
+
+    .modal-content input,
+    .modal-content select {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #dfe6e9;
+      border-radius: 8px;
+      font-size: 1rem;
+      margin-bottom: 15px;
+    }
+
+    .progress-bar {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 20px;
+    }
+
+    .progress-step {
+      width: 30px;
+      height: 30px;
+      background: #dfe6e9;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.9rem;
+      color: #2d3436;
+      transition: background 0.3s;
+    }
+
+    .progress-step.active {
+      background: #00b894;
+      color: #fff;
+    }
+
+    .modal-content button {
+      background: #0984e3;
+      color: #fff;
+      padding: 12px 20px;
+      border: none;
+      border-radius: 25px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .modal-content button:hover {
+      background: #00b894;
+    }
+
+    .close {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      font-size: 1.5rem;
+      cursor: pointer;
+      color: #636e72;
+    }
+
+    /* Footer Styles */
+    footer {
+      background: linear-gradient(90deg, #2d3436, #636e72);
+      color: #fff;
+      text-align: center;
+      padding: 40px 20px;
+      margin-top: 50px;
     }
 
     .footer-links a {
-      color: white;
-      margin: 0 10px;
+      color: #dfe6e9;
+      margin: 0 20px;
       text-decoration: none;
+      font-size: 1rem;
+      font-weight: 500;
+      transition: all 0.3s ease;
     }
 
     .footer-links a:hover {
-      text-decoration: underline;
+      color: #00b894;
+      transform: translateY(-2px);
     }
 
-    @media (max-width: 600px) {
+    footer p {
+      font-size: 0.95rem;
+      opacity: 0.9;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      header {
+        flex-direction: column;
+        gap: 20px;
+        padding: 15px 20px;
+      }
+
+      .controls {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+
       .transport-card {
-        text-align: center;
+        padding: 20px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      h1 {
+        font-size: 1.8rem;
+      }
+
+      .transport-card i {
+        font-size: 2.5rem;
+      }
+
+      .transport-card h2 {
+        font-size: 1.3rem;
+      }
+
+      .book-now {
+        padding: 8px 15px;
+        font-size: 0.9rem;
+      }
+
+      .modal-content {
+        padding: 20px;
       }
     }
   </style>
 </head>
 <body>
-
   <header>
-    <a href="index.html" class="logo"><i class="fas fa-route"></i> Track Your Tour</a>
-    <a href="index.html" class="btn"><i class="fas fa-arrow-left"></i> Back to Home</a>
+    <a href="index.html" class="logo" aria-label="Track Your Tour Home"><i class="fas fa-route"></i> Track Your Tour</a>
+    <a href="index.html" class="btn" aria-label="Back to Home"><i class="fas fa-arrow-left"></i> Back to Home</a>
   </header>
 
   <main>
     <h1>Choose Your Transportation</h1>
-    <div class="transportation-options">
-      <div class="transport-card">
+    <div class="controls">
+      <select id="filterType" aria-label="Filter by transportation type">
+        <option value="all">All Types</option>
+        <option value="train">Trains</option>
+        <option value="bus">Buses</option>
+        <option value="car">Rental Cars</option>
+        <option value="plane">Flights</option>
+        <option value="ship">Cruises</option>
+        <option value="taxi">City Transfers</option>
+      </select>
+      <select id="sortPrice" aria-label="Sort by price">
+        <option value="none">Sort by: Default</option>
+        <option value="low">Price: Low to High</option>
+        <option value="high">Price: High to Low</option>
+      </select>
+    </div>
+    <section class="transportation-options">
+      <article class="transport-card" data-type="train" data-price="500">
+        <span class="badge">Popular</span>
         <i class="fas fa-train"></i>
         <h2>Trains</h2>
         <p>Comfortable and scenic train journeys to your destination.</p>
         <div class="price">Starting from ₹500</div>
-      </div>
+        <button class="book-now" data-type="Trains">Book Now</button>
+      </article>
 
-      <div class="transport-card">
+      <article class="transport-card" data-type="bus" data-price="300">
+        <span class="badge">Budget</span>
         <i class="fas fa-bus"></i>
         <h2>Buses</h2>
         <p>Budget-friendly and frequent bus services across major routes.</p>
         <div class="price">Starting from ₹300</div>
-      </div>
+        <button class="book-now" data-type="Buses">Book Now</button>
+      </article>
 
-      <div class="transport-card">
+      <article class="transport-card" data-type="car" data-price="1200">
         <i class="fas fa-car-side"></i>
         <h2>Rental Cars</h2>
         <p>Rent a car for personalized, flexible, and private travel.</p>
         <div class="price">Starting from ₹1200/day</div>
-      </div>
+        <button class="book-now" data-type="Rental Cars">Book Now</button>
+      </article>
 
-      <div class="transport-card">
+      <article class="transport-card" data-type="plane" data-price="4000">
         <i class="fas fa-plane"></i>
         <h2>Domestic Flights</h2>
         <p>Quick and convenient air travel options to major destinations across the country.</p>
         <div class="price">Starting from ₹4000</div>
-      </div>
+        <button class="book-now" data-type="Domestic Flights">Book Now</button>
+      </article>
 
-      <div class="transport-card">
+      <article class="transport-card" data-type="ship" data-price="7000">
+        <span class="badge">Luxury</span>
         <i class="fas fa-ship"></i>
         <h2>Cruise Packages</h2>
         <p>Experience scenic waterways and coastal destinations with luxury and comfort.</p>
         <div class="price">Starting from ₹7000/person</div>
-      </div>
+        <button class="book-now" data-type="Cruise Packages">Book Now</button>
+      </article>
 
-      <div class="transport-card">
+      <article class="transport-card" data-type="taxi" data-price="5400">
         <i class="fas fa-taxi"></i>
         <h2>City Transfers</h2>
         <p>Pre-booked taxis and private transfers for hassle-free local travel.</p>
         <div class="price">Starting from ₹5400</div>
-      </div>
-    </div>
+        <button class="book-now" data-type="City Transfers">Book Now</button>
+      </article>
+    </section>
   </main>
 
-  <footer>
-    <div class="footer-links">
-      <a href="#">About</a>
-      <a href="#">Contact</a>
-      <a href="#">Privacy</a>
+  <div class="modal" id="bookingModal">
+    <div class="modal-content">
+      <span class="close" aria-label="Close modal">&times;</span>
+      <h2>Book <span id="transportType"></span></h2>
+      <div class="progress-bar">
+        <div class="progress-step active">1</div>
+        <div class="progress-step">2</div>
+        <div class="progress-step">3</div>
+      </div>
+      <label for="destination">Destination</label>
+      <input type="text" id="destination" placeholder="Enter destination" required>
+      <label for="date">Travel Date</label>
+      <input type="date" id="date" required>
+      <label for="passengers">Number of Passengers</label>
+      <select id="passengers" required>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+      </select>
+      <button id="nextStep">Next</button>
     </div>
-    <p>&copy; 2025 Track Your Tour. All rights reserved.</p>
+  </div>
+
+  <footer>
+    <nav class="footer-links">
+      <a href="#" aria-label="About Us">About</a>
+      <a href="#" aria-label="Contact Us">Contact</a>
+      <a href="#" aria-label="Privacy Policy">Privacy</a>
+    </nav>
+    <p>© 2025 Track Your Tour. All rights reserved.</p>
   </footer>
 
+  <script>
+    // Modal Handling
+    const modal = document.getElementById('bookingModal');
+    const closeModal = document.querySelector('.close');
+    const bookButtons = document.querySelectorAll('.book-now');
+    const transportTypeSpan = document.getElementById('transportType');
+    const nextStepBtn = document.getElementById('nextStep');
+    const progressSteps = document.querySelectorAll('.progress-step');
+    let currentStep = 1;
+
+    bookButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        transportTypeSpan.textContent = button.dataset.type;
+        modal.style.display = 'flex';
+        currentStep = 1;
+        updateProgress();
+      });
+    });
+
+    closeModal.addEventListener('click', () => {
+      modal.style.display = 'none';
+      resetForm();
+    });
+
+    window.addEventListener('click', (e) => {
+      if (e.target === modal) {
+        modal.style.display = 'none';
+        resetForm();
+      }
+    });
+
+    nextStepBtn.addEventListener('click', () => {
+      if (currentStep < 3) {
+        currentStep++;
+        updateProgress();
+      } else {
+        alert('Booking submitted! (This is a demo)');
+        modal.style.display = 'none';
+        resetForm();
+      }
+    });
+
+    function updateProgress() {
+      progressSteps.forEach((step, index) => {
+        step.classList.toggle('active', index < currentStep);
+      });
+    }
+
+    function resetForm() {
+      currentStep = 1;
+      updateProgress();
+      document.getElementById('destination').value = '';
+      document.getElementById('date').value = '';
+      document.getElementById('passengers').value = '1';
+    }
+
+    // Filter and Sort
+    const filterType = document.getElementById('filterType');
+    const sortPrice = document.getElementById('sortPrice');
+    const cards = document.querySelectorAll('.transport-card');
+
+    filterType.addEventListener('change', applyFilters);
+    sortPrice.addEventListener('change', applyFilters);
+
+    function applyFilters() {
+      const filterValue = filterType.value;
+      const sortValue = sortPrice.value;
+
+      // Filter
+      cards.forEach(card => {
+        const type = card.dataset.type;
+        card.style.display = (filterValue === 'all' || type === filterValue) ? 'block' : 'none';
+      });
+
+      // Sort
+      const visibleCards = Array.from(cards).filter(card => card.style.display !== 'none');
+      visibleCards.sort((a, b) => {
+        const priceA = parseInt(a.dataset.price);
+        const priceB = parseInt(b.dataset.price);
+        if (sortValue === 'low') return priceA - priceB;
+        if (sortValue === 'high') return priceB - priceA;
+        return 0;
+      });
+
+      const container = document.querySelector('.transportation-options');
+      container.innerHTML = '';
+      visibleCards.forEach(card => container.appendChild(card));
+    }
+  </script>
 </body>
 </html>
