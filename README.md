@@ -5,7 +5,7 @@
 
  
 ## GitHub Repository 
-[SCM PROJECT Repo Link](https://github.com/SnehaSandhu/Scm-project-2025.git)
+[SCM PROJECT Repo Link] (https://github.com/SnehaSandhu/Scm-project-2025.git)
 
 
 
@@ -18,7 +18,7 @@
 
 
 ## 📸 Screenshots
-[image](https://github.com/user-attachments/assets/2a23cfe7-d44f-41e7-b0e0-a229c1889b36)
+[image] (https://github.com/user-attachments/assets/2a23cfe7-d44f-41e7-b0e0-a229c1889b36)
 
 
 
@@ -36,6 +36,11 @@ This project is developed by:
 -Khushpreet Kaur:- [package.html]
 -Pururaj Kaur Brar:- [signin.html and javascript.js]
 -Sneha:- [javascript.js and style.css]
+
+
+ 
+
+
 
 
 
