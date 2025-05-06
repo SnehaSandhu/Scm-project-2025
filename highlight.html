@@ -316,6 +316,26 @@
     .nav-links a:hover::after {
       width: 100%;
     }
+    .btn {
+  display: inline-flex;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: #007BFF;
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+  font-weight: 600;
+  transition: background-color 0.3s ease;
+  font-size: 1rem;
+}
+
+.btn i {
+  margin-right: 8px;
+}
+
+.btn:hover {
+  background-color: #0056b3;
+}
     
     /* Footer */
     footer {
@@ -364,7 +384,7 @@
 </head>
 
 <body>
-  <!-- Navigation -->
+  
   <div class="nav-container">
     <nav>
       <a href="#" class="logo">Travel<span>Ease</span></a>
@@ -372,6 +392,7 @@
         <li><a href="#destination">Destinations</a></li>
         <li><a href="#activities">Activities</a></li>
         <li><a href="#plan">Travel Tips</a></li>
+        <li><a href="index.html" class="btn"><i class="fas fa-arrow-left"></i> Back to Home</a></li>
       </ul>
     </nav>
   </div>
@@ -425,7 +446,7 @@
           <source src="https://videos.pexels.com/video-files/7772225/7772225-sd_640_360_24fps.mp4" type="video/mp4" />
         </video>
         <p>Indulge in authentic flavors, from street food to gourmet dining, that tell the story of the region's history and people.</p>
-        <div class="price">500 Rs. <span>per person</span></div>
+        <div class="price">759 Rs. <span>per person</span></div>
         <a href="#" class="btn">Food Tours</a>
       </div>
     </div>
